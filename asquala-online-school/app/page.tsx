@@ -88,43 +88,19 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Column: Text & CTAs */}
               <div className="lg:col-span-6 flex flex-col items-start">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.2]">
-                  Structured online learning for{" "}
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.18]">
+                  Structured learning for{" "}
                   <span className="text-primary underline decoration-primary-border underline-offset-6">
                     real-world mastery
                   </span>
                 </h1>
 
-                <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                  Step-by-step curricula crafted by experienced practitioners. Build
-                  proven competence with modular lessons, targeted assessments, and
-                  verified certificates.
+                <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">
+                  Master in-demand skills through modular lessons, practical assessments, and verified completion certificates.
                 </p>
 
-                {/* Key Value Checklist */}
-                <div className="mt-6 flex flex-col gap-2.5 text-sm text-foreground">
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold text-xs">
-                      ✓
-                    </span>
-                    <span>Industry-aligned curricula subdivided into clear lessons</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold text-xs">
-                      ✓
-                    </span>
-                    <span>Automated quizzes and practical assessment feedback</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold text-xs">
-                      ✓
-                    </span>
-                    <span>Verifiable completion certificates for career growth</span>
-                  </div>
-                </div>
-
                 {/* Action Buttons */}
-                <div className="mt-8 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
+                <div className="mt-7 flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                   <Link
                     href="#courses"
                     className="w-full sm:w-auto px-6 py-3 text-sm font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary-hover shadow-xs transition-all text-center"
@@ -137,6 +113,19 @@ export default function Home() {
                   >
                     How Asquala Works
                   </Link>
+                </div>
+
+                {/* Minimal, compact perks */}
+                <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground font-medium">
+                  <span className="flex items-center gap-1.5">
+                    <span className="text-primary font-bold">✓</span> Free & paid tracks
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="text-primary font-bold">✓</span> Self-paced
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="text-primary font-bold">✓</span> Verified credentials
+                  </span>
                 </div>
               </div>
 
