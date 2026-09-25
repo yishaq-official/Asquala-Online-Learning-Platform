@@ -22,22 +22,21 @@ with hundreds of unrelated files mixed together, we'll organize around **busines
 
 # 1. High-Level Architecture
 
-For the initial version, I recommend a **Modular Monolith**.
+For the initial version, we will build a **Full-Stack Next.js Modular Monolith**.
 
-Not microservices yet.
+Not microservices. Not even a separated frontend/backend repo.
 
 ```text
                     ┌─────────────────────────┐
                     │       Asquala Web        │
-                    │     React / Next.js      │
+                    │     Next.js App Router   │
+                    │   (Frontend & Backend)   │
                     └────────────┬────────────┘
                                  │
-                              HTTPS
-                                 │
-                    ┌────────────▼────────────┐
-                    │      API Gateway         │
-                    │    / Application API     │
-                    └────────────┬────────────┘
+                 ┌───────────────┴───────────────┐
+                 │        Server Actions &       │
+                 │         Route Handlers        │
+                 └───────────────┬───────────────┘
                                  │
         ┌────────────────────────┼────────────────────────┐
         │                        │                        │
@@ -45,6 +44,7 @@ Not microservices yet.
  ┌─────────────┐         ┌──────────────┐         ┌──────────────┐
  │    Auth     │         │    Users     │         │    Courses   │
  │   Module    │         │    Module    │         │    Module    │
+ │(better-auth)│         │              │         │              │
  └─────────────┘         └──────────────┘         └──────────────┘
         │                        │                        │
         └────────────────────────┼────────────────────────┘
@@ -63,21 +63,23 @@ Not microservices yet.
              │                   │                   │
              ▼                   ▼                   ▼
        ┌───────────┐       ┌───────────┐       ┌────────────┐
-       │ Payments  │       │Notific.   │       │ Analytics  │
+       │ Payments  │       │ Media &   │       │ Analytics  │
+       │  (Chapa)  │       │ Storage   │       │            │
        └───────────┘       └───────────┘       └────────────┘
                                  │
                     ┌────────────▼────────────┐
                     │      Infrastructure      │
-                    │ PostgreSQL / Redis / S3  │
-                    │ Queue / Email / Storage  │
+                    │  PostgreSQL (Drizzle)    │
+                    │  Mux / UploadThing       │
                     └─────────────────────────┘
 ```
 
-The important idea is that **each module owns a business capability**.
+The important idea is that **each module owns a business capability** within the single Next.js application.
 
 ---
 
 # 2. Why Modular Monolith?
+
 
 This is important.
 
@@ -255,232 +257,131 @@ Administration
 
 ---
 
-# 5. Frontend Architecture
+# 5. Application Architecture
 
-For the frontend, I'd strongly consider **Next.js + TypeScript**.
+For the framework, we are using **Next.js + TypeScript (App Router)**.
 
-Since you're already interested in learning Next.js for full-stack development, Asquala is actually an excellent project to use for that.
-
-Something like:
+Instead of a complex Monorepo (Turborepo), we will start with a **Standard Next.js Project Structure** but organized in a modular way. 
 
 ```text
 asquala/
 │
-├── apps/
-│   │
-│   ├── web/
-│   │   └── ...
-│   │
-│   └── api/
-│       └── ...
+├── src/
+│   ├── app/                 # Next.js App Router (Pages, Layouts, API Routes)
+│   ├── modules/             # Business Logic (The "Backend" & Domain logic)
+│   ├── components/          # Shared UI Components (shadcn/ui, Tailwind)
+│   ├── lib/                 # Shared Utilities (Drizzle, better-auth config)
+│   ├── hooks/               # React Hooks
+│   └── stores/              # Client State (Zustand)
 │
-├── packages/
-│   ├── ui/
-│   ├── types/
-│   ├── config/
-│   ├── validation/
-│   └── utils/
-│
-└── infrastructure/
+├── public/
+├── drizzle/                 # Database Migrations
+└── package.json
 ```
 
-That's a **monorepo** structure.
+This single-repo approach keeps development fast and simple while maintaining boundaries.
 
 ---
 
-# 6. Frontend Structure
+# 6. Next.js App Router Structure
 
-Inside:
-
-```text
-apps/web/
-```
-
-I'd use:
+Inside `src/app/`, we structure by feature/audience:
 
 ```text
-src/
+src/app/
 │
-├── app/
-│   ├── (auth)/
-│   │   ├── login/
-│   │   ├── register/
-│   │   └── forgot-password/
-│   │
-│   ├── (public)/
-│   │   ├── courses/
-│   │   ├── instructors/
-│   │   └── categories/
-│   │
-│   ├── student/
-│   │   ├── dashboard/
-│   │   ├── courses/
-│   │   ├── learning/
-│   │   └── certificates/
-│   │
-│   ├── instructor/
-│   │   ├── dashboard/
-│   │   ├── courses/
-│   │   ├── students/
-│   │   └── analytics/
-│   │
-│   └── admin/
-│       ├── dashboard/
-│       ├── users/
-│       ├── courses/
-│       └── reports/
+├── (auth)/
+│   ├── login/
+│   ├── register/
+│   └── forgot-password/
 │
-├── features/
-│   ├── auth/
+├── (public)/
 │   ├── courses/
-│   ├── enrollment/
+│   ├── instructors/
+│   └── categories/
+│
+├── (student)/
+│   ├── dashboard/
 │   ├── learning/
-│   ├── assessments/
-│   ├── payments/
-│   └── notifications/
+│   └── certificates/
 │
-├── components/
-│   ├── ui/
-│   ├── layout/
-│   └── shared/
+├── (instructor)/
+│   ├── dashboard/
+│   ├── courses/
+│   └── analytics/
 │
-├── hooks/
-├── lib/
-├── services/
-├── stores/
-├── types/
-└── utils/
+├── (admin)/
+│   ├── dashboard/
+│   ├── users/
+│   └── courses/
+│
+└── api/                     # Route Handlers (Webhooks, etc.)
 ```
-
-This gives us a nice separation.
 
 ---
 
-# 7. Backend Architecture
+# 7. Backend Architecture (Server Actions & Modules)
 
-Here's where I want Asquala to become interesting.
-
-Instead of:
+Here's where Asquala becomes interesting. Instead of scattering logic inside Server Actions or React components, we organize by **feature/module** in `src/modules/`.
 
 ```text
-controllers/
-models/
-services/
-routes/
-```
-
-I'd organize by **feature/module**.
-
-```text
-apps/api/
-
 src/
 │
 ├── modules/
 │   │
-│   ├── identity/
-│   │   ├── controllers/
-│   │   ├── services/
-│   │   ├── repositories/
-│   │   ├── entities/
-│   │   ├── schemas/
-│   │   ├── routes/
-│   │   └── index.ts
+│   ├── auth/
+│   │   ├── actions.ts       # Next.js Server Actions
+│   │   ├── service.ts       # Core logic
+│   │   └── schema.ts        # Drizzle schema
 │   │
 │   ├── users/
 │   ├── courses/
-│   ├── catalog/
 │   ├── enrollment/
 │   ├── learning/
-│   ├── assessments/
-│   ├── assignments/
-│   ├── certificates/
-│   ├── reviews/
-│   ├── discussions/
 │   ├── payments/
-│   ├── notifications/
-│   ├── search/
-│   ├── analytics/
-│   └── administration/
-│
-├── shared/
-│   ├── database/
-│   ├── cache/
-│   ├── queue/
-│   ├── storage/
-│   ├── email/
-│   ├── logging/
-│   ├── errors/
-│   ├── middleware/
-│   └── utils/
-│
-├── config/
-│
-├── app.ts
-└── server.ts
+│   └── notifications/
 ```
 
-This is much more scalable.
+This is highly scalable.
 
 ---
 
 # 8. Inside a Module
 
-For example:
+For example, the Course module:
 
 ```text
-courses/
+src/modules/courses/
 │
-├── controllers/
-│   └── course.controller.ts
-│
-├── services/
-│   ├── create-course.service.ts
-│   ├── update-course.service.ts
-│   ├── publish-course.service.ts
-│   └── get-course.service.ts
-│
-├── repositories/
-│   └── course.repository.ts
-│
-├── entities/
-│   └── course.entity.ts
-│
-├── schemas/
-│   └── course.schema.ts
-│
-├── routes/
-│   └── course.routes.ts
-│
-└── index.ts
+├── actions.ts               # Next.js Server Actions (Callable from Client)
+├── service.ts               # Business logic (Create, Update, Fetch courses)
+├── schema.ts                # Drizzle ORM Schema definition for Courses
+├── queries.ts               # Complex DB queries
+└── types.ts                 # TypeScript types/zod validation
 ```
 
 The flow becomes:
 
 ```text
-HTTP Request
+React Component (Client)
      │
      ▼
-Controller
+Server Action (actions.ts)
      │
      ▼
-Validation
+Service (service.ts)
      │
      ▼
-Service
+Drizzle ORM (queries/schema)
      │
      ▼
-Repository
-     │
-     ▼
-Database
+PostgreSQL Database
 ```
-
-That's a very important architecture pattern to understand.
 
 ---
 
 # 9. Course Domain
+
 
 Courses will probably be the heart of Asquala.
 
@@ -565,16 +466,15 @@ PostgreSQL fits this beautifully.
 
 ---
 
-# 11. Core Database Entities
+# 11. Core Database Entities (Drizzle ORM)
 
-Initial conceptual schema:
+Using Drizzle, we will define our schema declaratively. Initial conceptual schema:
 
 ```text
 users
 │
 ├── roles
 ├── permissions
-├── user_roles
 │
 ├── instructor_profiles
 ├── student_profiles
@@ -592,34 +492,22 @@ users
 │
 ├── lesson_progress
 │
-├── quiz_attempts
-│
-├── assignment_submissions
-│
 ├── certificates
 │
 ├── reviews
 │
-├── payments
+├── payments (Chapa references)
 │
 └── notifications
 ```
-
-We can later create a proper ERD.
 
 ---
 
 # 12. Authentication Architecture
 
-Don't scatter authentication logic throughout the application.
+We are using **better-auth** for managing authentication and identity.
 
-Create an:
-
-```text
-Identity Module
-```
-
-Responsible for:
+`better-auth` will handle:
 
 ```text
 Registration
@@ -628,35 +516,15 @@ Logout
 Password reset
 Email verification
 Sessions
-Refresh tokens
 OAuth
-MFA
-Device management
 ```
 
-Then:
-
-```text
-Identity
-   │
-   ▼
-Authentication
-   │
-   ▼
-Authorization
-```
-
-Authentication answers:
-
-> Who are you?
-
-Authorization answers:
-
-> What are you allowed to do?
+The setup lives centrally (e.g., `src/lib/auth.ts`) and ties into Drizzle ORM seamlessly.
 
 ---
 
 # 13. RBAC
+
 
 Use **Role-Based Access Control**.
 
@@ -792,52 +660,30 @@ Coding
 
 Don't store videos directly inside PostgreSQL.
 
-Bad:
+Instead we will use specialized services tailored for Next.js:
+
+### Video Hosting: Mux
+Mux provides adaptive bitrate streaming (HLS) out of the box. 
+- You upload a video to Mux.
+- Mux processes it.
+- We store the Mux `playbackId` in our database.
+
+### File Hosting (Images, PDFs): UploadThing
+UploadThing makes handling file uploads inside Next.js extremely easy and type-safe.
 
 ```text
-PostgreSQL
-   └── 500MB video
-```
-
-Instead:
-
-```text
-             Asquala
-                │
-                ▼
-          Media Service
+             Asquala (Next.js)
                 │
         ┌───────┴───────┐
         ▼               ▼
- Object Storage       CDN
+   UploadThing         Mux
+   (Images/PDFs)     (Video Streaming)
 ```
-
-For example:
-
-```text
-PostgreSQL
-     │
-     │ metadata
-     ▼
-┌───────────────┐
-│ media_assets  │
-└───────────────┘
-        │
-        │ URL
-        ▼
-Object Storage
-```
-
-Possible technologies:
-
-- S3-compatible storage
-- Cloudflare R2
-- AWS S3
-- MinIO for local development
 
 ---
 
 # 17. Redis
+
 
 Redis should be a supporting infrastructure component.
 
@@ -1007,76 +853,48 @@ Instructor performance
 
 ---
 
-# 22. API Design
+# 22. API Design (Server Actions)
 
-I'd use REST initially.
+Since we are using Next.js App Router, we will rely heavily on **React Server Actions** instead of building a traditional REST API for the frontend.
 
-Example:
+Server Actions allow us to call backend functions directly from client components with full end-to-end type safety.
 
-```text
-/api/v1/auth
-/api/v1/users
-/api/v1/courses
-/api/v1/categories
-/api/v1/enrollments
-/api/v1/learning
-/api/v1/assessments
-/api/v1/assignments
-/api/v1/certificates
-/api/v1/reviews
-/api/v1/discussions
-/api/v1/payments
-/api/v1/notifications
-/api/v1/search
-/api/v1/analytics
+Example `actions.ts`:
+```typescript
+'use server'
+
+export async function createCourse(data: CreateCourseInput) {
+  // ... business logic ...
+}
 ```
 
-Versioning from day one:
-
-```text
-/api/v1/...
-```
-
-Then someday:
-
-```text
-/api/v2/...
-```
+We only use REST Route Handlers (`src/app/api/...`) for:
+- Webhooks (e.g., Chapa payment webhooks, Mux video processing webhooks)
+- External integrations
 
 ---
 
-# 23. API Response Standard
+# 23. API Response Standard (Server Actions)
 
-Don't let every developer return responses differently.
+Even with Server Actions, we should standardize responses:
 
-Standardize:
-
-```json
-{
-  "success": true,
-  "data": {},
-  "message": "Course created successfully",
-  "meta": {}
-}
+```typescript
+type ActionResponse<T> = {
+  success: boolean;
+  data?: T;
+  error?: {
+    code: string;
+    message: string;
+  };
+};
 ```
 
-Errors:
-
-```json
-{
-  "success": false,
-  "error": {
-    "code": "COURSE_NOT_FOUND",
-    "message": "Course not found"
-  }
-}
-```
-
-This makes the frontend much easier to maintain.
+This ensures the frontend handles loading and error states consistently.
 
 ---
 
 # 24. Security Architecture
+
 
 Because this is an education platform containing accounts and potentially payments, security should be architectural—not something we bolt on later.
 
@@ -1165,7 +983,7 @@ Again, not all on day one.
 
 # 26. Deployment Architecture
 
-Initial deployment could be:
+Initial deployment (e.g., Vercel or a VPS):
 
 ```text
                     Internet
@@ -1176,165 +994,95 @@ Initial deployment could be:
                  └────┬─────┘
                       │
              ┌────────▼────────┐
-             │   Next.js App   │
+             │ Next.js App     │
+             │ (Web & Backend) │
              └────────┬────────┘
                       │
-                      ▼
-             ┌─────────────────┐
-             │   API Server    │
-             └───────┬─────────┘
-                     │
-          ┌──────────┼──────────┐
-          ▼          ▼          ▼
-      PostgreSQL   Redis    Object Storage
-```
-
-Then later:
-
-```text
-                    Load Balancer
-                          │
-                ┌─────────┴─────────┐
-                ▼                   ▼
-            API Server 1        API Server 2
-                │                   │
-                └─────────┬─────────┘
-                          ▼
-                     PostgreSQL
+          ┌───────────┼───────────┐
+          ▼           ▼           ▼
+      PostgreSQL     Mux      UploadThing
 ```
 
 ---
 
 # 27. Recommended Technology Stack
 
-For **your** Asquala project, I'd design the initial stack around:
+For **Asquala**, we are locking in this modern tech stack:
 
 | Layer | Technology |
 |---|---|
-| Frontend | Next.js |
+| Framework | Next.js (App Router) |
 | Language | TypeScript |
 | Styling | Tailwind CSS |
-| Backend | Node.js |
-| API | REST |
-| ORM | Prisma |
+| UI Components | shadcn/ui |
+| State Management | Zustand |
+| ORM | Drizzle ORM |
 | Database | PostgreSQL |
-| Cache | Redis |
-| Queue | BullMQ |
-| Authentication | Custom Identity module / Auth library where appropriate |
+| Authentication | better-auth |
+| Payments | Chapa (Ethiopian Gateway) |
+| Video Hosting | Mux |
+| File Storage | UploadThing |
 | Validation | Zod |
-| Storage | S3-compatible |
-| Testing | Vitest + Playwright |
-| API Docs | OpenAPI / Swagger |
-| Containers | Docker |
-| CI/CD | GitHub Actions |
-| Monitoring | Sentry + OpenTelemetry later |
-
-And potentially:
-
-```text
-pnpm
-+
-Turborepo
-```
-
-for the monorepo.
 
 ---
 
 # 28. Complete Repository Architecture
 
-Putting everything together:
+Putting everything together into a unified Next.js structure:
 
 ```text
 asquala/
 │
-├── apps/
+├── src/
+│   ├── app/
+│   │   ├── (auth)/
+│   │   ├── (student)/
+│   │   ├── (instructor)/
+│   │   ├── (admin)/
+│   │   ├── api/             # Webhooks
+│   │   ├── layout.tsx
+│   │   └── page.tsx
 │   │
-│   ├── web/
-│   │   ├── src/
-│   │   │   ├── app/
-│   │   │   ├── features/
-│   │   │   ├── components/
-│   │   │   ├── hooks/
-│   │   │   ├── lib/
-│   │   │   ├── services/
-│   │   │   ├── stores/
-│   │   │   ├── types/
-│   │   │   └── utils/
-│   │   └── ...
+│   ├── components/
+│   │   ├── ui/              # shadcn components
+│   │   ├── layout/
+│   │   └── shared/
 │   │
-│   └── api/
-│       │
-│       ├── src/
-│       │   ├── modules/
-│       │   │   ├── identity/
-│       │   │   ├── users/
-│       │   │   ├── courses/
-│       │   │   ├── catalog/
-│       │   │   ├── enrollment/
-│       │   │   ├── learning/
-│       │   │   ├── assessments/
-│       │   │   ├── assignments/
-│       │   │   ├── certificates/
-│       │   │   ├── reviews/
-│       │   │   ├── discussions/
-│       │   │   ├── payments/
-│       │   │   ├── notifications/
-│       │   │   ├── search/
-│       │   │   ├── analytics/
-│       │   │   └── administration/
-│       │   │
-│       │   ├── shared/
-│       │   │   ├── database/
-│       │   │   ├── cache/
-│       │   │   ├── queue/
-│       │   │   ├── storage/
-│       │   │   ├── email/
-│       │   │   ├── logging/
-│       │   │   ├── errors/
-│       │   │   └── middleware/
-│       │   │
-│       │   ├── config/
-│       │   ├── app.ts
-│       │   └── server.ts
-│       │
-│       └── ...
+│   ├── modules/             # Business Logic & DB schemas
+│   │   ├── auth/
+│   │   ├── users/
+│   │   ├── courses/
+│   │   ├── learning/
+│   │   ├── assessments/
+│   │   ├── payments/
+│   │   └── notifications/
+│   │
+│   ├── lib/                 # Third-party setups
+│   │   ├── db.ts            # Drizzle setup
+│   │   ├── auth.ts          # better-auth setup
+│   │   ├── chapa.ts         # Chapa SDK setup
+│   │   ├── mux.ts
+│   │   └── uploadthing.ts
+│   │
+│   ├── stores/              # Zustand stores
+│   ├── hooks/
+│   └── types/
 │
-├── packages/
-│   ├── ui/
-│   ├── types/
-│   ├── validation/
-│   ├── config/
-│   └── utils/
-│
-├── database/
-│   ├── migrations/
-│   ├── seed/
-│   └── ...
-│
+├── drizzle/                 # Migrations
 ├── docs/
-│   ├── architecture/
-│   ├── api/
-│   ├── database/
-│   └── decisions/
+│   └── architecture/
 │
-├── infrastructure/
-│   ├── docker/
-│   └── deployment/
-│
-├── .github/
-│   └── workflows/
-│
-├── docker-compose.yml
+├── next.config.mjs
+├── tailwind.config.ts
+├── drizzle.config.ts
 ├── package.json
-├── pnpm-workspace.yaml
-├── turbo.json
 └── README.md
 ```
 
 ---
 
 # 29. Dependency Direction
+
 
 This is one of the **most important architectural rules**.
 
@@ -1424,7 +1172,7 @@ Discussions
 ### Phase 4 — Business
 
 ```text
-Payments
+Payments (Chapa Integration)
 Subscriptions
 Instructor revenue
 Analytics
