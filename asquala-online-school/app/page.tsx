@@ -6,24 +6,24 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-white border border-border/80 shadow-2xs transition-transform group-hover:scale-105">
+          <Link href="/" className="flex items-center gap-3.5 group">
+            <div className="relative transition-transform group-hover:scale-105">
               <Image
                 src="/images/logo.png"
                 alt="Asquala Logo"
-                width={40}
-                height={40}
-                className="w-8 h-8 object-contain"
+                width={56}
+                height={56}
+                className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl tracking-tight text-foreground leading-tight">
+              <span className="font-bold text-2xl sm:text-[26px] tracking-tight text-foreground leading-none">
                 Asquala
               </span>
-              <span className="text-[10px] uppercase font-semibold tracking-wider text-muted-foreground">
+              <span className="text-[11px] uppercase font-semibold tracking-wider text-muted-foreground mt-1">
                 Online Learning
               </span>
             </div>
@@ -491,18 +491,18 @@ export default function Home() {
       <footer className="border-t border-border bg-background py-12 text-sm text-muted-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-2.5">
-              <div className="relative w-7 h-7 rounded-md overflow-hidden flex items-center justify-center bg-white border border-border/80">
-                <Image
-                  src="/images/logo.png"
-                  alt="Asquala Logo"
-                  width={28}
-                  height={28}
-                  className="w-5 h-5 object-contain"
-                />
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/logo.png"
+                alt="Asquala Logo"
+                width={40}
+                height={40}
+                className="w-9 h-9 object-contain"
+              />
+              <div className="flex items-baseline gap-2">
+                <span className="font-bold text-lg text-foreground">Asquala</span>
+                <span className="text-xs text-muted-foreground">— Modern Online Learning Platform</span>
               </div>
-              <span className="font-bold text-foreground">Asquala</span>
-              <span className="text-xs text-muted-foreground">— Modern Online Learning Platform</span>
             </div>
             <div className="flex items-center gap-6 text-xs">
               <Link href="#courses" className="hover:text-foreground">Courses</Link>
