@@ -9,21 +9,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl shadow-xs transition-transform group-hover:scale-105">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-              >
-                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
-                <path d="M6 6h10" />
-                <path d="M6 10h10" />
-              </svg>
+            <div className="relative w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-white border border-border/80 shadow-2xs transition-transform group-hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="Asquala Logo"
+                width={40}
+                height={40}
+                className="w-8 h-8 object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-xl tracking-tight text-foreground leading-tight">
@@ -497,9 +491,18 @@ export default function Home() {
       <footer className="border-t border-border bg-background py-12 text-sm text-muted-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
+              <div className="relative w-7 h-7 rounded-md overflow-hidden flex items-center justify-center bg-white border border-border/80">
+                <Image
+                  src="/images/logo.png"
+                  alt="Asquala Logo"
+                  width={28}
+                  height={28}
+                  className="w-5 h-5 object-contain"
+                />
+              </div>
               <span className="font-bold text-foreground">Asquala</span>
-              <span>— Modern Online Learning Platform</span>
+              <span className="text-xs text-muted-foreground">— Modern Online Learning Platform</span>
             </div>
             <div className="flex items-center gap-6 text-xs">
               <Link href="#courses" className="hover:text-foreground">Courses</Link>
