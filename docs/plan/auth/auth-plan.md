@@ -198,10 +198,10 @@ Every auth component and form primitive **must** adhere strictly to the design s
 
 | Step | Task | Status | Output Files |
 |---|---|---|---|
-| **1.1** | Install Drizzle & DB packages | ⏳ Pending | `package.json` |
-| **1.2** | Configure `.env.local` | ⏳ Pending | `.env.local` |
-| **1.3** | Setup Drizzle client & config | ⏳ Pending | `db/index.ts`, `drizzle.config.ts` |
-| **1.4** | Verify Docker PostgreSQL connection | ⏳ Pending | Smoke test output |
+| **1.1** | Install Drizzle & DB packages | ✅ Completed | `package.json` |
+| **1.2** | Configure `.env.local` | ✅ Completed | `.env` |
+| **1.3** | Setup Drizzle client & config | ✅ Completed | `db/index.ts`, `drizzle.config.ts` |
+| **1.4** | Verify Docker PostgreSQL connection | ✅ Completed | Smoke test verified |
 | **2.1** | Install `better-auth` | ⏳ Pending | `package.json` |
 | **2.2** | Define Auth Schemas with RBAC | ⏳ Pending | `db/schema/auth.ts` |
 | **2.3** | Push migrations to PostgreSQL | ⏳ Pending | DB tables created |
