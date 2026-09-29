@@ -202,12 +202,12 @@ Every auth component and form primitive **must** adhere strictly to the design s
 | **1.2** | Configure `.env.local` | ✅ Completed | `.env` |
 | **1.3** | Setup Drizzle client & config | ✅ Completed | `db/index.ts`, `drizzle.config.ts` |
 | **1.4** | Verify Docker PostgreSQL connection | ✅ Completed | Smoke test verified |
-| **2.1** | Install `better-auth` | ⏳ Pending | `package.json` |
-| **2.2** | Define Auth Schemas with RBAC | ⏳ Pending | `db/schema/auth.ts` |
-| **2.3** | Push migrations to PostgreSQL | ⏳ Pending | DB tables created |
-| **2.4** | Configure server auth | ⏳ Pending | `lib/auth.ts` |
-| **2.5** | Create API route handler | ⏳ Pending | `app/api/auth/[...all]/route.ts` |
-| **2.6** | Create client auth instance | ⏳ Pending | `lib/auth-client.ts` |
+| **2.1** | Install `better-auth` | ✅ Completed | `package.json` |
+| **2.2** | Define Auth Schemas with RBAC | ✅ Completed | `db/schema/auth.ts` |
+| **2.3** | Push migrations to PostgreSQL | ✅ Completed | Tables created in PostgreSQL |
+| **2.4** | Configure server auth | ✅ Completed | `lib/auth.ts` |
+| **2.5** | Create API route handler | ✅ Completed | `app/api/auth/[...all]/route.ts` |
+| **2.6** | Create client auth instance | ✅ Completed | `lib/auth-client.ts` |
 | **3.1** | Install Zustand & build store | ⏳ Pending | `stores/auth-store.ts` |
 | **4.1** | Build Auth Layout with logo | ⏳ Pending | `app/(auth)/layout.tsx` |
 | **4.2** | Build reusable form primitives | ⏳ Pending | `components/ui/{input,label,button}.tsx` |
