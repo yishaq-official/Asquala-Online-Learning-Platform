@@ -208,7 +208,7 @@ Every auth component and form primitive **must** adhere strictly to the design s
 | **2.4** | Configure server auth | ✅ Completed | `lib/auth.ts` |
 | **2.5** | Create API route handler | ✅ Completed | `app/api/auth/[...all]/route.ts` |
 | **2.6** | Create client auth instance | ✅ Completed | `lib/auth-client.ts` |
-| **3.1** | Install Zustand & build store | ⏳ Pending | `stores/auth-store.ts` |
+| **3.1** | Install Zustand & build store | ✅ Completed | `stores/auth-store.ts` |
 | **4.1** | Build Auth Layout with logo | ⏳ Pending | `app/(auth)/layout.tsx` |
 | **4.2** | Build reusable form primitives | ⏳ Pending | `components/ui/{input,label,button}.tsx` |
 | **5.1** | Define Zod register schema | ⏳ Pending | `modules/auth/schema.ts` |
