@@ -209,8 +209,8 @@ Every auth component and form primitive **must** adhere strictly to the design s
 | **2.5** | Create API route handler | ✅ Completed | `app/api/auth/[...all]/route.ts` |
 | **2.6** | Create client auth instance | ✅ Completed | `lib/auth-client.ts` |
 | **3.1** | Install Zustand & build store | ✅ Completed | `stores/auth-store.ts` |
-| **4.1** | Build Auth Layout with logo | ⏳ Pending | `app/(auth)/layout.tsx` |
-| **4.2** | Build reusable form primitives | ⏳ Pending | `components/ui/{input,label,button}.tsx` |
+| **4.1** | Build Auth Layout with logo | ✅ Completed | `app/(auth)/layout.tsx` |
+| **4.2** | Build reusable form primitives | ✅ Completed | `components/ui/{input,label,button}.tsx` |
 | **5.1** | Define Zod register schema | ⏳ Pending | `modules/auth/schema.ts` |
 | **5.2** | Build Register page UI | ⏳ Pending | `app/(auth)/register/page.tsx` |
 | **5.3** | Wire register submission | ⏳ Pending | Functional signup |
