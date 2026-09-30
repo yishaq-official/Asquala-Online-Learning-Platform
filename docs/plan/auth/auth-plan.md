@@ -211,9 +211,10 @@ Every auth component and form primitive **must** adhere strictly to the design s
 | **3.1** | Install Zustand & build store | ✅ Completed | `stores/auth-store.ts` |
 | **4.1** | Build Auth Layout with logo | ✅ Completed | `app/(auth)/layout.tsx` |
 | **4.2** | Build reusable form primitives | ✅ Completed | `components/ui/{input,label,button}.tsx` |
-| **5.1** | Define Zod register schema | ⏳ Pending | `modules/auth/schema.ts` |
-| **5.2** | Build Register page UI | ⏳ Pending | `app/(auth)/register/page.tsx` |
-| **5.3** | Wire register submission | ⏳ Pending | Functional signup |
+| **5.1** | Define Zod register schema | ✅ Completed | `modules/auth/schema.ts` |
+| **5.2** | Build Register page UI | ✅ Completed | `app/(auth)/register/page.tsx` |
+| **5.3** | Wire register submission | ✅ Completed | `authClient.signUp.email` |
+| **5.4** | Verify user & password in DB | ✅ Completed | Verified in PostgreSQL |
 | **6.1** | Build Login page UI | ⏳ Pending | `app/(auth)/login/page.tsx` |
 | **6.2** | Wire login submission & cookies | ⏳ Pending | Functional login |
 | **7.1** | Connect Navbar to active session | ⏳ Pending | `components/layout/navbar.tsx` |
