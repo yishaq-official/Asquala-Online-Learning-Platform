@@ -58,4 +58,3 @@ export default function AuthLayout({
     </div>
   );
 }
-tion 
