@@ -217,5 +217,5 @@ Every auth component and form primitive **must** adhere strictly to the design s
 | **5.4** | Verify user & password in DB | ✅ Completed | Verified in PostgreSQL |
 | **6.1** | Build Login page UI | ✅ Completed | `app/(auth)/login/page.tsx` |
 | **6.2** | Wire login submission & cookies | ✅ Completed | Verified session token & cookie |
-| **7.1** | Connect Navbar to active session | ⏳ Pending | `components/layout/navbar.tsx` |
-| **7.2** | Verify logout & session clear | ⏳ Pending | End-to-end verified |
+| **7.1** | Connect Navbar to active session | ✅ Completed | `components/layout/navbar.tsx` |
+| **7.2** | Verify logout & session clear | ✅ Completed | `authClient.signOut()` |
