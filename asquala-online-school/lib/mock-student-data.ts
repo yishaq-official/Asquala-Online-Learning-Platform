@@ -569,3 +569,90 @@ export const MOCK_LEARNING_PREFERENCES: LearningPreferences = {
   notifyWeeklyDigest: true,
   notifyNewCourses: false,
 };
+
+export function getCourseDetailBySlug(slug: string): CourseDetail | null {
+  if (MOCK_COURSE_DETAILS[slug]) {
+    return MOCK_COURSE_DETAILS[slug];
+  }
+
+  const catalogItem = MOCK_CATALOG_COURSES.find((c) => c.slug === slug);
+  if (!catalogItem) return null;
+
+  return {
+    ...catalogItem,
+    description: `Dive deep into ${catalogItem.title}. This industry-focused curriculum covers foundational concepts up through enterprise-grade architecture, complete with interactive hands-on code labs, quizzes, and verified accreditation.`,
+    whatYouWillLearn: [
+      `Master core principles and best practices in ${catalogItem.category}`,
+      "Construct production-ready projects with clean, modern architectural patterns",
+      "Understand performance optimization, security, and scalability trade-offs",
+      "Earn a verifiable digital certificate to showcase on your professional profile",
+    ],
+    prerequisites: [
+      "Basic programming and developer tools literacy",
+      "A code editor and development environment set up on your machine",
+    ],
+    certificateAvailable: true,
+    lastUpdated: "October 2026",
+    language: "English",
+    modules: [
+      {
+        id: "mod-1",
+        title: "Module 1: Orientation & Foundations",
+        order: 1,
+        lessons: [
+          {
+            id: "lesson-1-1",
+            title: "Course Overview & Objectives",
+            order: 1,
+            durationMinutes: 8,
+            type: "video",
+            isPreview: true,
+          },
+          {
+            id: "lesson-1-2",
+            title: "Development Environment Setup",
+            order: 2,
+            durationMinutes: 14,
+            type: "video",
+            isPreview: true,
+          },
+          {
+            id: "lesson-1-3",
+            title: "Foundations Reading & Architecture Overview",
+            order: 3,
+            durationMinutes: 10,
+            type: "reading",
+          },
+        ],
+      },
+      {
+        id: "mod-2",
+        title: "Module 2: Core Architecture & Implementation",
+        order: 2,
+        lessons: [
+          {
+            id: "lesson-2-1",
+            title: "Designing Data Flows & State Machines",
+            order: 1,
+            durationMinutes: 20,
+            type: "video",
+          },
+          {
+            id: "lesson-2-2",
+            title: "Hands-on Code Exercise & Test Suite",
+            order: 2,
+            durationMinutes: 25,
+            type: "video",
+          },
+          {
+            id: "lesson-2-3",
+            title: "Module 2 Checkpoint Assessment",
+            order: 3,
+            durationMinutes: 15,
+            type: "quiz",
+          },
+        ],
+      },
+    ],
+  };
+}
