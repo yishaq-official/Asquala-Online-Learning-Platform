@@ -184,3 +184,12 @@ export interface LearningPreferences {
   notifyWeeklyDigest: boolean;
   notifyNewCourses: boolean;
 }
+
+export interface CourseAnnouncement {
+  id: string;
+  title: string;
+  date: string;
+  content: string;
+  authorName: string;
+  isPinned?: boolean;
+}

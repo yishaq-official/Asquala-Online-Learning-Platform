@@ -9,6 +9,8 @@ import {
   CertificateItem,
   StudentProfile,
   LearningPreferences,
+  CourseResource,
+  CourseAnnouncement,
 } from "@/types/student";
 
 export const MOCK_STUDENT_STATS: StudentStats = {
@@ -656,3 +658,54 @@ export function getCourseDetailBySlug(slug: string): CourseDetail | null {
     ],
   };
 }
+
+export const MOCK_COURSE_RESOURCES: CourseResource[] = [
+  {
+    id: "res-1",
+    title: "Official Starter Repository & Docker Compose Configuration",
+    type: "github",
+    url: "https://github.com/asquala/nextjs-16-fullstack-starter",
+  },
+  {
+    id: "res-2",
+    title: "Complete Module 1-4 Architectural Cheatsheet & Diagrams",
+    type: "pdf",
+    size: "4.2 MB",
+    url: "#",
+  },
+  {
+    id: "res-3",
+    title: "PostgreSQL Production Schema & Migration SQL Scripts",
+    type: "pdf",
+    size: "1.8 MB",
+    url: "#",
+  },
+  {
+    id: "res-4",
+    title: "Full-Stack Exercise Code & Assets Package (.zip)",
+    type: "zip",
+    size: "16.4 MB",
+    url: "#",
+  },
+];
+
+export const MOCK_COURSE_ANNOUNCEMENTS: CourseAnnouncement[] = [
+  {
+    id: "anc-1",
+    title: "Live Architecture Review & Q&A Session This Friday!",
+    date: "2 days ago",
+    content:
+      "Join us live this Friday at 4:00 PM for an in-depth walkthrough of database pooling, Drizzle migrations, and real-world authentication patterns. Bring your questions!",
+    authorName: "Yishaq Abreham",
+    isPinned: true,
+  },
+  {
+    id: "anc-2",
+    title: "Module 3 Assessment & Code Solution Walkthrough Available",
+    date: "1 week ago",
+    content:
+      "The Module 3 quiz has been published alongside downloadable solution zip files for the authentication laboratory.",
+    authorName: "Yishaq Abreham",
+    isPinned: false,
+  },
+];
