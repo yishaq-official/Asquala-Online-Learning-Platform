@@ -1,0 +1,60 @@
+"use client";
+
+import * as React from "react";
+import { Search, X, ArrowUpDown } from "lucide-react";
+
+export type LibrarySort = "recent" | "progress" | "title";
+
+interface CourseLibrarySearchProps {
+  searchValue: string;
+  onSearchChange: (value: string) => void;
+  sortOption: LibrarySort;
+  onSortChange: (sort: LibrarySort) => void;
+}
+
+export function CourseLibrarySearch({
+  searchValue,
+  onSearchChange,
+  sortOption,
+  onSortChange,
+}: CourseLibrarySearchProps) {
+  return (
+    <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 w-full">
+      {/* Search Input */}
+      <div className="relative flex-1 max-w-md">
+        <Search className="w-4 h-4 text-muted-foreground absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+        <input
+          type="text"
+          value={searchValue}
+          onChange={(e) => onSearchChange(e.target.value)}
+          placeholder="Filter your enrolled courses..."
+          className="w-full pl-9 pr-9 py-2 text-xs sm:text-sm rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-ring transition-all shadow-2xs"
+        />
+        {searchValue && (
+          <button
+            type="button"
+            onClick={() => onSearchChange("")}
+            className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary absolute right-2.5 top-1/2 -translate-y-1/2 cursor-pointer"
+            aria-label="Clear filter text"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
+        )}
+      </div>
+
+      {/* Sort Select */}
+      <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
+        <ArrowUpDown className="w-3.5 h-3.5 text-muted-foreground" />
+        <select
+          value={sortOption}
+          onChange={(e) => onSortChange(e.target.value as LibrarySort)}
+          className="bg-card border border-border text-foreground rounded-xl px-3 py-2 text-xs font-semibold focus:outline-hidden focus:ring-1 focus:ring-ring cursor-pointer shadow-2xs"
+        >
+          <option value="recent">Recently Active</option>
+          <option value="progress">Highest Progress</option>
+          <option value="title">Alphabetical (A-Z)</option>
+        </select>
+      </div>
+    </div>
+  );
+}
