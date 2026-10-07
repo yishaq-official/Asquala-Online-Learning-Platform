@@ -709,3 +709,15 @@ export const MOCK_COURSE_ANNOUNCEMENTS: CourseAnnouncement[] = [
     isPinned: false,
   },
 ];
+
+export function getQuizById(quizId: string): QuizDetail {
+  if (quizId === MOCK_SAMPLE_QUIZ.id) {
+    return MOCK_SAMPLE_QUIZ;
+  }
+
+  return {
+    ...MOCK_SAMPLE_QUIZ,
+    id: quizId,
+    title: `Assessment Checkpoint: ${quizId.toUpperCase()}`,
+  };
+}
