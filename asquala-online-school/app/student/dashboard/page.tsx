@@ -1,84 +1,84 @@
 import * as React from "react";
-import Link from "next/link";
-import { Sparkles, ArrowRight, BookOpen, Compass, Award } from "lucide-react";
+import {
+  MOCK_STUDENT_STATS,
+  MOCK_JUMP_BACK_IN,
+  MOCK_UPCOMING_DEADLINES,
+  MOCK_ENROLLED_COURSES,
+} from "@/lib/mock-student-data";
+import { JumpBackInCard } from "@/components/student/dashboard/jump-back-in-card";
+import { StudentStatCard } from "@/components/student/dashboard/student-stat-card";
+import { EnrolledPreviewList } from "@/components/student/dashboard/enrolled-preview-list";
+import { UpcomingDeadlinesCard } from "@/components/student/dashboard/upcoming-deadlines-card";
+import { WeeklyGoalWidget } from "@/components/student/dashboard/weekly-goal-widget";
+import { BookOpen, Clock, Flame, Award } from "lucide-react";
 
 export default function StudentDashboardPage() {
   return (
-    <div className="space-y-6">
-      {/* Welcome Banner */}
-      <div className="bg-card border border-primary-border/60 rounded-xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
-        <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-light text-primary text-xs font-semibold mb-3 border border-primary-border">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Welcome to Asquala Student Portal</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
-            Welcome back, Learner! 👋
+    <div className="space-y-8 animate-in fade-in-0 duration-300">
+      {/* Welcome & Motivational Greeting */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            Welcome back, Alex! 👋
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Your learning hub is live. Explore our catalog of expert-led courses, resume your active modules, and track your industry-recognized certificates.
+          <p className="text-sm text-muted-foreground mt-1">
+            Consistency is the key to mastery. You have 2 lessons left to complete your current module.
           </p>
+        </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Link
-              href="/student/explore"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-hover shadow-xs transition-colors"
-            >
-              <Compass className="w-4 h-4" />
-              <span>Explore Courses</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/student/courses"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-secondary border border-border text-foreground text-sm font-semibold hover:bg-card transition-colors"
-            >
-              <BookOpen className="w-4 h-4 text-primary" />
-              <span>My Enrolled Courses</span>
-            </Link>
-          </div>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold w-fit">
+          <Flame className="w-4 h-4 text-amber-500 fill-amber-500 animate-pulse" />
+          <span>5-Day Learning Streak Active</span>
         </div>
       </div>
 
-      {/* Quick Navigation Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <Link
-          href="/student/courses"
-          className="group p-5 rounded-xl bg-card border border-border hover:border-primary-border hover:shadow-xs transition-all"
-        >
-          <div className="w-10 h-10 rounded-lg bg-primary-light text-primary flex items-center justify-center border border-primary-border mb-3 group-hover:scale-105 transition-transform">
-            <BookOpen className="w-5 h-5" />
-          </div>
-          <h3 className="font-semibold text-foreground text-base">My Course Library</h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            Access in-progress and completed learning modules.
-          </p>
-        </Link>
+      {/* Hero "Jump Back In" Resumption Card */}
+      <JumpBackInCard item={MOCK_JUMP_BACK_IN} />
 
-        <Link
-          href="/student/explore"
-          className="group p-5 rounded-xl bg-card border border-border hover:border-primary-border hover:shadow-xs transition-all"
-        >
-          <div className="w-10 h-10 rounded-lg bg-primary-light text-primary flex items-center justify-center border border-primary-border mb-3 group-hover:scale-105 transition-transform">
-            <Compass className="w-5 h-5" />
-          </div>
-          <h3 className="font-semibold text-foreground text-base">Explore Catalog</h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            Discover new courses across web, backend, design, and cloud.
-          </p>
-        </Link>
+      {/* 4-Col Learning Metrics Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <StudentStatCard
+          label="Enrolled Courses"
+          value={MOCK_STUDENT_STATS.enrolledCoursesCount}
+          subtext="2 active in progress"
+          icon={BookOpen}
+          variant="primary"
+        />
+        <StudentStatCard
+          label="Hours Learned"
+          value={`${MOCK_STUDENT_STATS.totalHoursLearned}h`}
+          subtext="+3.5 hrs this week"
+          icon={Clock}
+          variant="slate"
+        />
+        <StudentStatCard
+          label="Current Streak"
+          value={`${MOCK_STUDENT_STATS.currentStreakDays} Days`}
+          subtext="Keep studying daily"
+          icon={Flame}
+          variant="amber"
+        />
+        <StudentStatCard
+          label="Certificates"
+          value={MOCK_STUDENT_STATS.completedCertificatesCount}
+          subtext="Verified credentials"
+          icon={Award}
+          variant="primary"
+        />
+      </div>
 
-        <Link
-          href="/student/certificates"
-          className="group p-5 rounded-xl bg-card border border-border hover:border-primary-border hover:shadow-xs transition-all"
-        >
-          <div className="w-10 h-10 rounded-lg bg-primary-light text-primary flex items-center justify-center border border-primary-border mb-3 group-hover:scale-105 transition-transform">
-            <Award className="w-5 h-5" />
-          </div>
-          <h3 className="font-semibold text-foreground text-base">Verified Certificates</h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            View, share, and export your accredited course credentials.
-          </p>
-        </Link>
+      {/* Two-Column Grid: In-Progress Courses & Sidebar Widgets */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+        {/* Main Column: Enrolled Courses Quick View (2 cols wide on desktop) */}
+        <div className="lg:col-span-2 space-y-6">
+          <EnrolledPreviewList courses={MOCK_ENROLLED_COURSES} />
+        </div>
+
+        {/* Sidebar Widgets: Upcoming Deadlines & Weekly Study Goal */}
+        <div className="space-y-6">
+          <UpcomingDeadlinesCard deadlines={MOCK_UPCOMING_DEADLINES} />
+          <WeeklyGoalWidget completedHours={3.5} targetHours={5.0} />
+        </div>
       </div>
     </div>
   );
