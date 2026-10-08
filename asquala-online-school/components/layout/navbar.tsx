@@ -83,8 +83,20 @@ export function Navbar() {
             <div className="h-9 w-28 rounded-lg bg-secondary animate-pulse" />
           ) : session?.user ? (
             <div className="flex items-center gap-2.5">
+              {/* Go to Student Portal */}
+              <Link
+                href="/student/dashboard"
+                className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary-hover shadow-xs transition-colors"
+              >
+                Student Portal
+              </Link>
+
               {/* User Profile Badge */}
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary border border-border">
+              <Link
+                href="/student/settings"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary hover:bg-secondary/80 border border-border transition-colors"
+                title="Student Profile & Settings"
+              >
                 <div className="w-7 h-7 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold text-xs uppercase border border-primary-border">
                   {session.user.name?.[0] || "U"}
                 </div>
@@ -96,7 +108,7 @@ export function Navbar() {
                     {session.user.role || "student"}
                   </span>
                 </div>
-              </div>
+              </Link>
 
               {/* Sign Out Action */}
               <button

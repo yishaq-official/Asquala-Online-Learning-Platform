@@ -80,8 +80,8 @@ export default function RegisterPage() {
         return;
       }
 
-      // Successful registration: Redirect to homepage with active session
-      router.push("/");
+      // Successful registration: Redirect to student dashboard
+      router.push("/student/dashboard");
       router.refresh();
     } catch (err: unknown) {
       const message =

@@ -14,6 +14,7 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { redirectAfterLogin, isLoading, setIsLoading } = useAuthStore();
+  const { data: session } = authClient.useSession();
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -24,6 +25,19 @@ function LoginForm() {
     {}
   );
   const [serverError, setServerError] = React.useState<string | null>(null);
+
+  // Auto-redirect if already signed in
+  React.useEffect(() => {
+    if (session?.user) {
+      const requestedRedirect =
+        searchParams.get("redirect") || redirectAfterLogin;
+      const targetUrl =
+        requestedRedirect && requestedRedirect !== "/"
+          ? requestedRedirect
+          : "/student/dashboard";
+      router.replace(targetUrl);
+    }
+  }, [session, router, searchParams, redirectAfterLogin]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -72,9 +86,14 @@ function LoginForm() {
         return;
       }
 
-      // Successful login: Redirect to original target or homepage
+      // Successful login: Redirect to requested target or Student Dashboard
+      const requestedRedirect =
+        searchParams.get("redirect") || redirectAfterLogin;
       const targetUrl =
-        searchParams.get("redirect") || redirectAfterLogin || "/";
+        requestedRedirect && requestedRedirect !== "/"
+          ? requestedRedirect
+          : "/student/dashboard";
+
       router.push(targetUrl);
       router.refresh();
     } catch (err: unknown) {
