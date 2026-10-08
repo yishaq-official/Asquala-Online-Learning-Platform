@@ -184,3 +184,199 @@ export const MOCK_INSTRUCTOR_COURSES: InstructorCourseItem[] = [
     lastUpdatedAt: "2026-10-07",
   },
 ];
+
+export function getInstructorCourseById(courseId: string): InstructorCourseItem | undefined {
+  return MOCK_INSTRUCTOR_COURSES.find(
+    (c) => c.id === courseId || c.slug === courseId
+  );
+}
+
+export function getInstructorCourseCurriculum(courseId: string) {
+  const course = getInstructorCourseById(courseId);
+  const slug = course?.slug || courseId;
+
+  // If course matches Next.js 16 Full-Stack Mastery, provide rich 5-module curriculum
+  if (slug === "nextjs-16-fullstack-mastery" || courseId === "inst-course-1") {
+    return [
+      {
+        id: "mod-1",
+        title: "Module 1: Foundations & Local Development Setup",
+        order: 1,
+        lessons: [
+          {
+            id: "lesson-1-1",
+            title: "Course Overview & Learning Outcomes",
+            order: 1,
+            durationMinutes: 6,
+            type: "video" as const,
+            isPreview: true,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            resources: [
+              {
+                id: "res-1",
+                title: "Course Architecture Slides (PDF)",
+                type: "pdf" as const,
+                url: "#",
+                size: "4.2 MB",
+              },
+            ],
+          },
+          {
+            id: "lesson-1-2",
+            title: "Setting Up Docker & PostgreSQL 18 Locally",
+            order: 2,
+            durationMinutes: 14,
+            type: "video" as const,
+            isPreview: true,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            id: "lesson-1-3",
+            title: "Initializing Next.js 16 with TypeScript & Strict Tailwind v4",
+            order: 3,
+            durationMinutes: 12,
+            type: "video" as const,
+            isPreview: false,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            id: "lesson-1-4",
+            title: "Foundations Milestone Assessment",
+            order: 4,
+            durationMinutes: 10,
+            type: "quiz" as const,
+            quizId: "quiz-mod-1",
+          },
+        ],
+      },
+      {
+        id: "mod-2",
+        title: "Module 2: Database Modeling & Drizzle ORM",
+        order: 2,
+        lessons: [
+          {
+            id: "lesson-2-1",
+            title: "Relational Schema Design & Table Constraints",
+            order: 1,
+            durationMinutes: 18,
+            type: "video" as const,
+            isPreview: false,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            id: "lesson-2-2",
+            title: "Configuring the Drizzle Client Singleton Pool",
+            order: 2,
+            durationMinutes: 15,
+            type: "video" as const,
+            isPreview: false,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            id: "lesson-2-3",
+            title: "Schema Migrations with drizzle-kit",
+            order: 3,
+            durationMinutes: 11,
+            type: "reading" as const,
+            readingContent: "## Database Schema Migrations\n\nLearn how to configure `drizzle-kit generate` and apply automated schema migrations without database downtime.",
+          },
+          {
+            id: "lesson-2-4",
+            title: "Relational Queries & Complex Joins",
+            order: 4,
+            durationMinutes: 16,
+            type: "video" as const,
+            isPreview: false,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+        ],
+      },
+      {
+        id: "mod-3",
+        title: "Module 3: Server Actions & Safe Mutations",
+        order: 3,
+        lessons: [
+          {
+            id: "lesson-3-1",
+            title: "Next.js 16 Server Actions Architecture",
+            order: 1,
+            durationMinutes: 14,
+            type: "video" as const,
+            isPreview: false,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            id: "lesson-3-2",
+            title: "Form Validation with Zod & Optimistic UI",
+            order: 2,
+            durationMinutes: 17,
+            type: "video" as const,
+            isPreview: false,
+            videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            id: "lesson-3-3",
+            title: "Module 3 Mutation & Security Assessment",
+            order: 3,
+            durationMinutes: 12,
+            type: "quiz" as const,
+            quizId: "quiz-mod-3",
+          },
+        ],
+      },
+    ];
+  }
+
+  // Fallback default modules for any other course
+  return [
+    {
+      id: "mod-1",
+      title: "Module 1: Introduction & Architecture Setup",
+      order: 1,
+      lessons: [
+        {
+          id: "lesson-1-1",
+          title: "Course Overview & Objectives",
+          order: 1,
+          durationMinutes: 10,
+          type: "video" as const,
+          isPreview: true,
+          videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        },
+        {
+          id: "lesson-1-2",
+          title: "Setting Up Development Environment",
+          order: 2,
+          durationMinutes: 15,
+          type: "reading" as const,
+          readingContent: "## Environment Setup\n\nEnsure you have Node.js 22+, Docker, and your preferred code editor installed.",
+        },
+      ],
+    },
+    {
+      id: "mod-2",
+      title: "Module 2: Practical Implementation & Lab",
+      order: 2,
+      lessons: [
+        {
+          id: "lesson-2-1",
+          title: "Building Production Services",
+          order: 1,
+          durationMinutes: 20,
+          type: "video" as const,
+          isPreview: false,
+          videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        },
+        {
+          id: "lesson-2-2",
+          title: "Module 2 Comprehension Quiz",
+          order: 2,
+          durationMinutes: 15,
+          type: "quiz" as const,
+          quizId: "quiz-mod-2",
+        },
+      ],
+    },
+  ];
+}
+

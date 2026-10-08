@@ -3,7 +3,7 @@
 > **File**: `docs/plan/instructor-interface/06-course-builder-curriculum.md`  
 > **Target Route**: `/instructor/courses/[courseId]/curriculum`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/instructor-interface/00-overview.md)  
-> **Status**: READY FOR IMPLEMENTATION
+> **Status**: COMPLETED
 
 ---
 
@@ -53,9 +53,10 @@ asquala-online-school/
 
 ## 🧪 Implementation & Verification Checklist
 
-- [ ] **Step 1**: Implement `CurriculumTopBar` with breadcrumb and autosave indicator.
-- [ ] **Step 2**: Implement `CurriculumModuleItem` with drag / reorder and lesson list.
-- [ ] **Step 3**: Implement `CurriculumLessonItem` with duration, type badge, and edit triggers.
-- [ ] **Step 4**: Implement `AddLessonModal` supporting video, reading, and quiz types.
-- [ ] **Step 5**: Implement `LessonEditorDrawer` with markdown and video metadata.
-- [ ] **Step 6**: Validate TypeScript compliance with `tsc --noEmit`.
+- [x] **Step 1**: Implement `CurriculumTopBar` with breadcrumb and autosave indicator.
+- [x] **Step 2**: Implement `CurriculumModuleItem` with drag / reorder and lesson list.
+- [x] **Step 3**: Implement `CurriculumLessonItem` with duration, type badge, and edit triggers.
+- [x] **Step 4**: Implement `AddLessonModal` supporting video, reading, and quiz types.
+- [x] **Step 5**: Implement `LessonEditorDrawer` with markdown and video metadata.
+- [x] **Step 6**: Validate TypeScript compliance with `tsc --noEmit`.
+
