@@ -3,7 +3,7 @@
 > **File**: `docs/plan/instructor-interface/12-profile-credentials-settings.md`  
 > **Target Route**: `/instructor/settings` via `app/instructor/settings/page.tsx`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/instructor-interface/00-overview.md)  
-> **Status**: READY FOR IMPLEMENTATION
+> **Status**: COMPLETED
 
 ---
 
@@ -46,8 +46,9 @@ asquala-online-school/
 
 ## 🧪 Implementation & Verification Checklist
 
-- [ ] **Step 1**: Implement `InstructorProfileForm` with live preview.
-- [ ] **Step 2**: Implement `VerifiedCredentialsCard` with verified badge styling.
-- [ ] **Step 3**: Implement `SubmitNewCredentialModal` with file upload.
-- [ ] **Step 4**: Implement `StudioNotificationsForm` with accessible switch toggles.
-- [ ] **Step 5**: Validate TypeScript compliance with `tsc --noEmit`.
+- [x] **Step 1**: Implement `InstructorProfileForm` with live preview.
+- [x] **Step 2**: Implement `VerifiedCredentialsCard` with verified badge styling.
+- [x] **Step 3**: Implement `SubmitNewCredentialModal` with file upload.
+- [x] **Step 4**: Implement `StudioNotificationsForm` with accessible switch toggles.
+- [x] **Step 5**: Validate TypeScript compliance with `tsc --noEmit`.
+
