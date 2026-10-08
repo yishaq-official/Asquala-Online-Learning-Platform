@@ -3,7 +3,7 @@
 > **File**: `docs/plan/instructor-interface/11-earnings-payouts.md`  
 > **Target Route**: `/instructor/earnings` via `app/instructor/earnings/page.tsx`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/instructor-interface/00-overview.md)  
-> **Status**: READY FOR IMPLEMENTATION
+> **Status**: COMPLETED
 
 ---
 
@@ -49,8 +49,9 @@ asquala-online-school/
 
 ## 🧪 Implementation & Verification Checklist
 
-- [ ] **Step 1**: Implement `EarningsSummaryCards` with formatted ETB amounts.
-- [ ] **Step 2**: Implement `PayoutMethodsManager` supporting Telebirr & CBE details.
-- [ ] **Step 3**: Implement `RequestPayoutModal` with validation and success feedback.
-- [ ] **Step 4**: Implement `PayoutHistoryTable` with status pills and receipt download.
-- [ ] **Step 5**: Validate TypeScript compliance with `tsc --noEmit`.
+- [x] **Step 1**: Implement `EarningsSummaryCards` with formatted ETB amounts.
+- [x] **Step 2**: Implement `PayoutMethodsManager` supporting Telebirr & CBE details.
+- [x] **Step 3**: Implement `RequestPayoutModal` with validation and success feedback.
+- [x] **Step 4**: Implement `PayoutHistoryTable` with status pills and receipt download.
+- [x] **Step 5**: Validate TypeScript compliance with `tsc --noEmit`.
+
