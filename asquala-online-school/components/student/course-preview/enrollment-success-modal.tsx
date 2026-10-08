@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { CheckCircle2, GraduationCap, ArrowRight, X } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, ArrowRight, X } from "lucide-react";
 
 interface EnrollmentSuccessModalProps {
   isOpen: boolean;
@@ -40,9 +41,16 @@ export function EnrollmentSuccessModal({
           <X className="w-4 h-4" />
         </button>
 
-        {/* Celebration Emblem */}
-        <div className="w-16 h-16 rounded-2xl bg-primary-light text-primary flex items-center justify-center mx-auto border-2 border-primary-border shadow-xs">
-          <GraduationCap className="w-8 h-8 animate-bounce" />
+        {/* Celebration Emblem with Official Logo */}
+        <div className="relative w-16 h-16 rounded-2xl bg-primary-light flex items-center justify-center mx-auto border-2 border-primary-border shadow-xs p-2">
+          <Image
+            src="/images/logo.png"
+            alt="Asquala Logo"
+            width={48}
+            height={48}
+            className="w-12 h-12 object-contain"
+            priority
+          />
         </div>
 
         {/* Text */}

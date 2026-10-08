@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { Award, Printer, X, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { CertificateItem } from "@/types/student";
 
@@ -72,9 +73,18 @@ export function CertificatePreviewModal({
             <Award className="w-8 h-8 sm:w-10 sm:h-10" />
           </div>
 
-          {/* Header */}
-          <div className="space-y-1">
-            <span className="text-xs uppercase font-extrabold tracking-widest text-primary">
+          {/* Header with Brand Logo */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-center">
+              <Image
+                src="/images/logo.png"
+                alt="Asquala Logo"
+                width={48}
+                height={48}
+                className="w-12 h-12 object-contain"
+              />
+            </div>
+            <span className="text-xs uppercase font-extrabold tracking-widest text-primary block">
               Asquala Online Learning Platform
             </span>
             <h1 className="text-2xl sm:text-4xl font-serif font-bold text-foreground tracking-tight">

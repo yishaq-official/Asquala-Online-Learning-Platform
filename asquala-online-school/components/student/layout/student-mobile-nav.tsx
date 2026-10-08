@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useStudentUiStore } from "@/stores/student-ui-store";
 import { authClient } from "@/lib/auth-client";
@@ -13,7 +14,6 @@ import {
   Award,
   Settings,
   X,
-  GraduationCap,
   LogOut,
 } from "lucide-react";
 
@@ -84,8 +84,15 @@ export function StudentMobileNav() {
             onClick={() => setMobileNavOpen(false)}
             className="flex items-center gap-3"
           >
-            <div className="w-9 h-9 rounded-lg bg-primary-light flex items-center justify-center border border-primary-border">
-              <GraduationCap className="w-5 h-5 text-primary" />
+            <div className="relative shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="Asquala Logo"
+                width={36}
+                height={36}
+                className="w-9 h-9 object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-base tracking-tight text-foreground leading-none">

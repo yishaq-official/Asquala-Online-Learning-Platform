@@ -151,8 +151,15 @@ export const db = drizzle(pool);`}</pre>
           showControls ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex items-center gap-2 text-white">
-          <span className="w-2 h-2 rounded-full bg-primary" />
+        <div className="flex items-center gap-2.5 text-white">
+          <div className="relative w-5 h-5 shrink-0 opacity-90">
+            <Image
+              src="/images/logo.png"
+              alt="Asquala"
+              fill
+              className="object-contain"
+            />
+          </div>
           <h2 className="font-bold text-sm sm:text-base drop-shadow truncate max-w-lg">
             {title}
           </h2>

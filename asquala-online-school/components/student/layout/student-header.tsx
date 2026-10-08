@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useStudentUiStore } from "@/stores/student-ui-store";
 import { StreakBadge } from "./streak-badge";
@@ -31,6 +33,22 @@ export function StudentHeader() {
         >
           <Menu className="w-5 h-5" />
         </button>
+
+        {/* Mobile Brand Logo */}
+        <Link
+          href="/student/dashboard"
+          className="lg:hidden shrink-0 flex items-center"
+          title="Asquala Student Portal"
+        >
+          <Image
+            src="/images/logo.png"
+            alt="Asquala Logo"
+            width={32}
+            height={32}
+            className="w-8 h-8 object-contain"
+            priority
+          />
+        </Link>
 
         {/* Global Search Input */}
         <form onSubmit={handleSearchSubmit} className="relative w-full">

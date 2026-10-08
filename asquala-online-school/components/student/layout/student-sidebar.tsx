@@ -13,7 +13,6 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  GraduationCap,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -61,8 +60,15 @@ export function StudentSidebar() {
           className="flex items-center gap-3 overflow-hidden group"
           title="Asquala Student Portal"
         >
-          <div className="w-10 h-10 rounded-xl bg-primary-light flex items-center justify-center border border-primary-border shrink-0 transition-transform group-hover:scale-105">
-            <GraduationCap className="w-5 h-5 text-primary" />
+          <div className="relative shrink-0 transition-transform group-hover:scale-105">
+            <Image
+              src="/images/logo.png"
+              alt="Asquala Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10 object-contain"
+              priority
+            />
           </div>
           {!isSidebarCollapsed && (
             <div className="flex flex-col min-w-0">
