@@ -3,7 +3,7 @@
 > **File**: `docs/plan/instructor-interface/08-quiz-assessment-creator.md`  
 > **Target Route**: `/instructor/courses/[courseId]/quizzes`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/instructor-interface/00-overview.md)  
-> **Status**: READY FOR IMPLEMENTATION
+> **Status**: COMPLETED
 
 ---
 
@@ -48,8 +48,9 @@ asquala-online-school/
 
 ## 🧪 Implementation & Verification Checklist
 
-- [ ] **Step 1**: Implement `QuizConfigCard` with time and passing score inputs.
-- [ ] **Step 2**: Implement `QuestionEditorItem` with 4 options and explanation.
-- [ ] **Step 3**: Implement `AddQuestionModal` and `CodeSnippetInput`.
-- [ ] **Step 4**: Implement `QuizPreviewModal` to test assessment from student perspective.
-- [ ] **Step 5**: Validate TypeScript compliance with `tsc --noEmit`.
+- [x] **Step 1**: Implement `QuizConfigCard` with time and passing score inputs.
+- [x] **Step 2**: Implement `QuestionEditorItem` with 4 options and explanation.
+- [x] **Step 3**: Implement `AddQuestionModal` and `CodeSnippetInput`.
+- [x] **Step 4**: Implement `QuizPreviewModal` to test assessment from student perspective.
+- [x] **Step 5**: Validate TypeScript compliance with `tsc --noEmit`.
+

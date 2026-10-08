@@ -93,3 +93,26 @@ export interface InstructorStatKPIs {
   publishedCoursesCount: number;
   draftCoursesCount: number;
 }
+
+export type CourseDifficultyLevel = "Beginner" | "Intermediate" | "Advanced" | "All Levels";
+export type CourseLanguage = "English" | "Amharic" | "Afaan Oromoo";
+
+export interface CourseSettingsData {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  category: string;
+  level: CourseDifficultyLevel;
+  language: CourseLanguage;
+  thumbnailUrl: string;
+  promotionalVideoUrl?: string;
+  whatYouWillLearn: string[];
+  prerequisites: string[];
+  isPaid: boolean;
+  priceETB: number;
+  status: CoursePublishStatus;
+  certificateAvailable: boolean;
+}
+
