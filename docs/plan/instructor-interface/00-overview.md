@@ -203,20 +203,21 @@ export interface InstructorStatKPIs {
 
 ## 🚀 Phased Implementation Roadmap
 
-| Phase | Milestone | Deliverables |
-|---|---|---|
-| **Phase 1** | **Teacher Auth & Application Wizard** | Dedicated `/instructor/login`, `/instructor/apply` with 4-step evidence submission (Education, Experience, Certificates). |
-| **Phase 2** | **Application Review Tracker** | `/instructor/application-status` with review stages timeline, document audit checklist, and resubmission modal. |
-| **Phase 3** | **Teacher Studio Shell** | Responsive desktop/mobile Studio Sidebar, Topbar with "Switch to Student Portal", user menu. |
-| **Phase 4** | **Studio Overview Dashboard** | `/instructor/dashboard` with revenue KPIs (ETB), student enrollment counter, course rating metrics, quick actions. |
-| **Phase 5** | **Course Management & Catalog** | `/instructor/courses` directory with status badges (*Published*, *Draft*, *In Review*), search, and course cards. |
-| **Phase 6** | **Course Builder & Curriculum Editor** | `/instructor/courses/[id]/curriculum` with interactive module/lesson creator, video/reading editor, reordering. |
-| **Phase 7** | **Course Metadata & Pricing Settings** | `/instructor/courses/[id]/settings` with title, category, ETB pricing selector, learning objectives list. |
-| **Phase 8** | **Assessment & Quiz Builder** | `/instructor/courses/[id]/quizzes` with question builder, passing threshold, code snippet editor. |
-| **Phase 9** | **Student Analytics & Insights** | `/instructor/analytics` with enrollment velocity charts, drop-off rate monitors, feedback reviews. |
-| **Phase 10** | **Q&A Forum Inbox** | `/instructor/qa` with unified inbox for unanswered student queries across all instructor courses. |
-| **Phase 11** | **Earnings & Payouts (Telebirr/CBE)** | `/instructor/earnings` with revenue breakdown, platform split, Telebirr/CBE withdrawal management. |
-| **Phase 12** | **Public Profile & Credentials Settings** | `/instructor/settings` with teacher bio, credentials showcase, payout details. |
+| Phase | Milestone | Deliverables | Status |
+|---|---|---|---|
+| **Phase 1** | **Teacher Auth & Application Wizard** | Dedicated `/instructor/login`, `/instructor/apply` with 4-step evidence submission (Education, Experience, Certificates). | ✅ Complete |
+| **Phase 2** | **Application Review Tracker** | `/instructor/application-status` with review stages timeline, document audit checklist, and resubmission modal. | ✅ Complete |
+| **Phase 3** | **Teacher Studio Shell** | Responsive desktop/mobile Studio Sidebar, Topbar with "Switch to Student Portal", user menu. | ✅ Complete |
+| **Phase 4** | **Studio Overview Dashboard** | `/instructor/dashboard` with revenue KPIs (ETB), student enrollment counter, course rating metrics, quick actions. | ✅ Complete |
+| **Phase 5** | **Course Management & Catalog** | `/instructor/courses` directory with status badges (*Published*, *Draft*, *In Review*), search, and course cards. | ✅ Complete |
+| **Phase 6** | **Course Builder & Curriculum Editor** | `/instructor/courses/[id]/curriculum` with interactive module/lesson creator, video/reading editor, reordering. | ✅ Complete |
+| **Phase 7** | **Course Metadata & Pricing Settings** | `/instructor/courses/[id]/settings` with title, category, ETB pricing selector, learning objectives list. | ✅ Complete |
+| **Phase 8** | **Assessment & Quiz Builder** | `/instructor/courses/[id]/quizzes` with question builder, passing threshold, code snippet editor. | ✅ Complete |
+| **Phase 9** | **Student Analytics & Insights** | `/instructor/analytics` with enrollment velocity charts, drop-off rate monitors, feedback reviews. | ✅ Complete |
+| **Phase 10** | **Q&A Forum Inbox** | `/instructor/qa` with unified inbox for unanswered student queries across all instructor courses. | ✅ Complete |
+| **Phase 11** | **Earnings & Payouts (Telebirr/CBE)** | `/instructor/earnings` with revenue breakdown, platform split, Telebirr/CBE withdrawal management. | ✅ Complete |
+| **Phase 12** | **Public Profile & Credentials Settings** | `/instructor/settings` with teacher bio, credentials showcase, payout details. | ✅ Complete |
+
 
 ---
 
