@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState, useCallback } from "react";
-import {
-  MOCK_APPROVED_INSTRUCTOR_APPLICATION,
-  InstructorApplication,
-} from "@/lib/mock-instructor-data";
+import { MOCK_APPROVED_INSTRUCTOR_APPLICATION } from "@/lib/mock-instructor-data";
+import { InstructorApplication } from "@/types/instructor";
+
 import { InstructorProfileForm } from "@/components/instructor/settings/instructor-profile-form";
 import { VerifiedCredentialsCard } from "@/components/instructor/settings/verified-credentials-card";
 import { SubmitNewCredentialModal } from "@/components/instructor/settings/submit-new-credential-modal";
