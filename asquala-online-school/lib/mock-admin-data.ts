@@ -1,0 +1,187 @@
+import {
+  ExecutiveKpiData,
+  TeacherApplicationPreview,
+  CourseReviewPreview,
+  TreasuryClearancePreview,
+  PlatformAuditItem,
+} from "@/types/admin";
+
+export const EXECUTIVE_KPI_DATA: ExecutiveKpiData = {
+  grossGmv: 2480000,
+  gmvGrowthPercent: 24.5,
+  platformTakeRateRevenue: 372000,
+  takeRateGrowthPercent: 18.2,
+  activeLearners: 8940,
+  learnersGrowthPercent: 12.4,
+  accreditedTeachers: 48,
+  pendingAccreditationsCount: 4,
+};
+
+export const PENDING_TEACHER_APPLICATIONS: TeacherApplicationPreview[] = [
+  {
+    id: "app-001",
+    name: "Yishaq Abreham",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    headline: "Senior Cloud & Distributed Systems Architect",
+    institution: "Addis Ababa Institute of Technology (AAiT)",
+    degreeTitle: "M.Sc. Computer Engineering (Distributed Systems)",
+    yearsExperience: 7,
+    currentCompany: "Ethio FinTech / Telebirr Core Integration",
+    status: "pending",
+    statusNote: "Degree verified with AAU Registrar. Ready for final ruling.",
+    submittedAt: "Today, 10:45 AM",
+  },
+  {
+    id: "app-002",
+    name: "Bethlehem Haile",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    headline: "Senior DevOps & Infrastructure Engineer",
+    institution: "Addis Ababa Science & Technology University (AASTU)",
+    degreeTitle: "B.Sc. Software Engineering",
+    yearsExperience: 6,
+    currentCompany: "Ethio Telecom Platform Infrastructure",
+    status: "pending",
+    statusNote: "AWS Certified Solutions Architect verification verified.",
+    submittedAt: "Yesterday, 03:20 PM",
+  },
+  {
+    id: "app-003",
+    name: "Natnael Dagne",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    headline: "Mobile Application Developer & Flutter Engineer",
+    institution: "Jimma University (JU)",
+    degreeTitle: "B.Sc. Information Technology",
+    yearsExperience: 4,
+    currentCompany: "Ride / Hybrid Apps Addis",
+    status: "action_required",
+    statusNote: "Blurry JU transcript scan — applicant notified to re-upload official copy.",
+    submittedAt: "Oct 08, 02:15 PM",
+  },
+  {
+    id: "app-004",
+    name: "Dr. Meron Tesfaye",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
+    headline: "Assistant Professor & Machine Learning Researcher",
+    institution: "Addis Ababa University (AAU)",
+    degreeTitle: "Ph.D. Computer Science (NLP for Semitic Languages)",
+    yearsExperience: 11,
+    currentCompany: "AAU Artificial Intelligence Research Lab",
+    status: "approved",
+    statusNote: "Unanimously accredited by Academic Board Chair.",
+    submittedAt: "Oct 06, 09:30 AM",
+  },
+];
+
+export const PENDING_COURSE_REVIEWS: CourseReviewPreview[] = [
+  {
+    id: "crs-aud-001",
+    title: "Full-Stack Web Architecture with Next.js 16 & PostgreSQL",
+    instructorName: "Yishaq Abreham",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    category: "Software Engineering",
+    modulesCount: 8,
+    lessonsCount: 42,
+    durationHours: 14.5,
+    quizCount: 4,
+    priceETB: 2500,
+    status: "pending_review",
+    statusNote: "4 milestone quizzes with strict 80% passing threshold configured.",
+    submittedAt: "Today, 11:30 AM",
+  },
+  {
+    id: "crs-aud-002",
+    title: "Enterprise DevOps CI/CD Pipelines with Docker & Kubernetes",
+    instructorName: "Bethlehem Haile",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    category: "Cloud & DevOps",
+    modulesCount: 6,
+    lessonsCount: 28,
+    durationHours: 11.0,
+    quizCount: 3,
+    priceETB: 2200,
+    status: "in_audit",
+    statusNote: "Auditing Module 4 quiz questions and lab environment requirements.",
+    submittedAt: "Oct 09, 04:10 PM",
+  },
+  {
+    id: "crs-aud-003",
+    title: "Cross-Platform Mobile Development with Flutter & Dart (Amharic)",
+    instructorName: "Natnael Dagne",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    category: "Mobile Development",
+    modulesCount: 7,
+    lessonsCount: 34,
+    durationHours: 13.0,
+    quizCount: 3,
+    priceETB: 1800,
+    status: "revision_requested",
+    statusNote: "Milestone Quiz 2 requires at least 5 conceptual questions before publishing.",
+    submittedAt: "Oct 07, 01:20 PM",
+  },
+];
+
+export const TREASURY_CLEARANCE_DATA: TreasuryClearancePreview = {
+  totalPendingETB: 68400,
+  totalPendingCount: 3,
+  telebirrPendingETB: 33400,
+  telebirrCount: 2,
+  cbePendingETB: 35000,
+  cbeCount: 1,
+  lastSettlementBatchId: "ETB-BATCH-8839",
+  lastSettlementTime: "Yesterday at 04:30 PM",
+};
+
+export const PLATFORM_AUDIT_LOG_DATA: PlatformAuditItem[] = [
+  {
+    id: "log-001",
+    timestamp: "12 mins ago",
+    actor: "Dr. Alazar Tadesse",
+    actorRole: "Board Chair",
+    action: "Approved MoE Accreditation",
+    target: "Dr. Meron Tesfaye (AAU Ph.D.)",
+    status: "approved",
+  },
+  {
+    id: "log-002",
+    timestamp: "45 mins ago",
+    actor: "Abebe Kebede",
+    actorRole: "Curriculum Auditor",
+    action: "Requested Revision on Quiz",
+    target: "Cross-Platform Flutter Course (Quiz #2)",
+    status: "flagged",
+  },
+  {
+    id: "log-003",
+    timestamp: "2 hours ago",
+    actor: "Dr. Alazar Tadesse",
+    actorRole: "Treasury Auditor",
+    action: "Authorized Telebirr Payout Batch",
+    target: "ETB 42,500 (Batch #ETB-8839)",
+    status: "settled",
+  },
+  {
+    id: "log-004",
+    timestamp: "Yesterday",
+    actor: "Dr. Alazar Tadesse",
+    actorRole: "Board Chair",
+    action: "Published Verified Course",
+    target: "Microservices with Go & gRPC",
+    status: "approved",
+  },
+  {
+    id: "log-005",
+    timestamp: "Oct 08",
+    actor: "Audit System",
+    actorRole: "Quality Engine",
+    action: "Flagged Low-Resolution Scan",
+    target: "Natnael Dagne (JU Transcript Scan)",
+    status: "flagged",
+  },
+];
