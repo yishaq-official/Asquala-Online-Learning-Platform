@@ -3,7 +3,7 @@
 > **File**: `docs/plan/admin-interface/04-course-quality-audit.md`  
 > **Target Routes**: `/admin/courses`, `/admin/courses/[id]`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/admin-interface/00-overview.md)  
-> **Status**: SPECIFIED & PLANNED  
+> **Status**: COMPLETED & VERIFIED IN BROWSER ✅  
 
 ---
 
@@ -79,7 +79,7 @@ asquala-online-school/
 
 ## 4. Verification Checklist
 
-- [ ] Filter tabs correctly isolate pending courses from approved courses.
-- [ ] Financial split card calculates 85% instructor net and 15% platform infrastructure cut accurately.
-- [ ] Recording an "Approved" ruling updates course badge to `Approved & Live on Marketplace`.
-- [ ] Recording a "Revision Requested" ruling updates badge and attaches the feedback notes.
+- [x] Filter tabs correctly isolate pending courses from approved courses.
+- [x] Financial split card calculates 85% instructor net and 15% platform infrastructure cut accurately.
+- [x] Recording an "Approved" ruling updates course badge to `Approved & Live on Marketplace`.
+- [x] Recording a "Revision Requested" ruling updates badge and attaches the feedback notes.
