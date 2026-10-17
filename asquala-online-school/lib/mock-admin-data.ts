@@ -1,6 +1,7 @@
 import {
   ExecutiveKpiData,
   TeacherApplicationPreview,
+  TeacherDossier,
   CourseReviewPreview,
   TreasuryClearancePreview,
   PlatformAuditItem,
@@ -17,41 +18,206 @@ export const EXECUTIVE_KPI_DATA: ExecutiveKpiData = {
   pendingAccreditationsCount: 4,
 };
 
-export const PENDING_TEACHER_APPLICATIONS: TeacherApplicationPreview[] = [
-  {
+export const INITIAL_TEACHER_DOSSIERS: Record<string, TeacherDossier> = {
+  "app-001": {
     id: "app-001",
     name: "Yishaq Abreham",
     avatarUrl:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     headline: "Senior Cloud & Distributed Systems Architect",
+    specialty: "Cloud Architecture & Next.js Systems",
     institution: "Addis Ababa Institute of Technology (AAiT)",
     degreeTitle: "M.Sc. Computer Engineering (Distributed Systems)",
     yearsExperience: 7,
     currentCompany: "Ethio FinTech / Telebirr Core Integration",
     status: "pending",
-    statusNote: "Degree verified with AAU Registrar. Ready for final ruling.",
+    statusNote: "Degree verified against AAU Registrar. Ready for Board ruling.",
     submittedAt: "Today, 10:45 AM",
+    degrees: [
+      {
+        id: "deg-01",
+        institution: "Addis Ababa Institute of Technology (AAiT)",
+        degreeLevel: "M.Sc.",
+        fieldOfStudy: "Software Engineering & Distributed Systems",
+        graduationYear: 2020,
+        documentScanName: "aait_msc_diploma_verified.pdf",
+        documentScanSize: "2.4 MB (300 DPI)",
+        registrarVerificationId: "AAU-REG-2020-8910",
+        verificationSealStatus: "verified",
+        scanNotes: "Official certified PDF diploma scan with Ministry of Education verification seal.",
+      },
+      {
+        id: "deg-02",
+        institution: "Addis Ababa University (AAU)",
+        degreeLevel: "B.Sc.",
+        fieldOfStudy: "Computer Science",
+        graduationYear: 2017,
+        documentScanName: "aau_bsc_transcript_official.pdf",
+        documentScanSize: "3.1 MB (300 DPI)",
+        registrarVerificationId: "AAU-CS-2017-3104",
+        verificationSealStatus: "verified",
+        scanNotes: "Graduated with Very Great Distinction (CGPA: 3.86/4.00).",
+      },
+    ],
+    experience: [
+      {
+        id: "exp-01",
+        role: "Senior Cloud & Distributed Systems Architect",
+        organization: "Ethio FinTech / Telebirr Core Integration",
+        years: 4,
+        period: "2022 — Present",
+        highlights: [
+          "Architected high-throughput transaction ledger handling 4,500+ TPS with sub-100ms latency.",
+          "Designed multi-datacenter active-active replication between Ethio Telecom central and regional nodes.",
+          "Led a team of 14 senior Ethiopian software engineers building microservices.",
+        ],
+        academicReference: {
+          name: "Dr. Tsegaye Mengistu",
+          title: "Associate Professor of Distributed Systems",
+          institution: "Addis Ababa Institute of Technology (AAiT)",
+          contact: "tsegaye.mengistu@aait.edu.et",
+        },
+      },
+      {
+        id: "exp-02",
+        role: "Senior Backend Engineer",
+        organization: "Chapa Financial Technologies",
+        years: 3,
+        period: "2019 — 2022",
+        highlights: [
+          "Implemented national payment gateway adapters for Telebirr, CBE Birr, and Awash Bank.",
+          "Automated reconciliation workflows saving over 120 operational hours monthly.",
+        ],
+      },
+    ],
+    certifications: [
+      {
+        id: "cert-01",
+        title: "AWS Certified Solutions Architect – Professional",
+        issuer: "Amazon Web Services (AWS)",
+        credentialId: "AWS-PSA-991823-ETH",
+        issueDate: "March 2023",
+        verificationUrl: "https://aws.amazon.com/verification",
+      },
+      {
+        id: "cert-02",
+        title: "CKA: Certified Kubernetes Administrator",
+        issuer: "Cloud Native Computing Foundation (CNCF)",
+        credentialId: "CKA-772910-AA",
+        issueDate: "November 2022",
+        verificationUrl: "https://cncf.io/certification",
+      },
+    ],
+    auditionLecture: {
+      title: "Distributed Transaction Coordination with 2-Phase Commit & Saga Pattern (in Amharic & English)",
+      durationMinutes: 24,
+      videoUrl: "https://stream.asquala.edu/auditions/app-001/lecture.mp4",
+      topicsCovered: [
+        "ACID constraints across microservices",
+        "Saga Orchestration vs Choreography with Kafka",
+        "Handling compensation rollbacks during Ethiopian banking gateway timeouts",
+      ],
+    },
+    identity: {
+      fullName: "Yishaq Abreham Hailu",
+      officialEmail: "yishaq.abreham@gmail.com",
+      phone: "+251 91 123 4567",
+      location: "Bole Subcity, Addis Ababa, Ethiopia",
+      nationalIdVerified: true,
+      nationalIdNumberMasked: "ETH-NID-••••-8821",
+      linkedInUrl: "https://linkedin.com/in/yishaq-abreham",
+      gitHubUrl: "https://github.com/yishaq-abreham",
+      portfolioUrl: "https://yishaq.dev",
+    },
+    boardRulingHistory: [],
   },
-  {
+
+  "app-002": {
     id: "app-002",
     name: "Bethlehem Haile",
     avatarUrl:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
     headline: "Senior DevOps & Infrastructure Engineer",
+    specialty: "Kubernetes & CI/CD Pipelines",
     institution: "Addis Ababa Science & Technology University (AASTU)",
     degreeTitle: "B.Sc. Software Engineering",
     yearsExperience: 6,
     currentCompany: "Ethio Telecom Platform Infrastructure",
     status: "pending",
-    statusNote: "AWS Certified Solutions Architect verification verified.",
+    statusNote: "AWS Certified Solutions Architect verified. Ready for Board ruling.",
     submittedAt: "Yesterday, 03:20 PM",
+    degrees: [
+      {
+        id: "deg-03",
+        institution: "Addis Ababa Science & Technology University (AASTU)",
+        degreeLevel: "B.Sc.",
+        fieldOfStudy: "Software Engineering",
+        graduationYear: 2018,
+        documentScanName: "aastu_bsc_software_eng.pdf",
+        documentScanSize: "1.9 MB (300 DPI)",
+        registrarVerificationId: "AASTU-REG-2018-4421",
+        verificationSealStatus: "verified",
+        scanNotes: "Official degree certificate verified against AASTU Alumni Records.",
+      },
+    ],
+    experience: [
+      {
+        id: "exp-03",
+        role: "Senior DevOps Engineer",
+        organization: "Ethio Telecom Platform Infrastructure",
+        years: 6,
+        period: "2018 — Present",
+        highlights: [
+          "Built zero-downtime canary deployment pipelines for Ethio Telecom value-added services.",
+          "Maintained 99.98% uptime across private cloud OpenStack and Kubernetes clusters.",
+        ],
+        academicReference: {
+          name: "Eng. Michael Berhe",
+          title: "Chief Cloud Infrastructure Architect",
+          institution: "Ethio Telecom Enterprise Division",
+          contact: "michael.berhe@ethiotelecom.et",
+        },
+      },
+    ],
+    certifications: [
+      {
+        id: "cert-03",
+        title: "AWS Certified DevOps Engineer – Professional",
+        issuer: "Amazon Web Services",
+        credentialId: "AWS-DOP-441209",
+        issueDate: "June 2023",
+      },
+    ],
+    auditionLecture: {
+      title: "Building Resilient CI/CD Pipelines on Linux with GitHub Actions & Docker",
+      durationMinutes: 18,
+      videoUrl: "https://stream.asquala.edu/auditions/app-002/lecture.mp4",
+      topicsCovered: [
+        "Multi-stage Docker builds for minimal attack surface",
+        "Secrets management with HashiCorp Vault",
+        "Automated rollback on staging healthcheck failure",
+      ],
+    },
+    identity: {
+      fullName: "Bethlehem Hailemariam Haile",
+      officialEmail: "bethlehem.haile@gmail.com",
+      phone: "+251 92 345 6789",
+      location: "Yeka Subcity, Addis Ababa, Ethiopia",
+      nationalIdVerified: true,
+      nationalIdNumberMasked: "ETH-NID-••••-5510",
+      linkedInUrl: "https://linkedin.com/in/bethlehem-haile",
+      gitHubUrl: "https://github.com/bethlehem-devops",
+    },
+    boardRulingHistory: [],
   },
-  {
+
+  "app-003": {
     id: "app-003",
     name: "Natnael Dagne",
     avatarUrl:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
     headline: "Mobile Application Developer & Flutter Engineer",
+    specialty: "Flutter & Dart Mobile Architecture",
     institution: "Jimma University (JU)",
     degreeTitle: "B.Sc. Information Technology",
     yearsExperience: 4,
@@ -59,13 +225,78 @@ export const PENDING_TEACHER_APPLICATIONS: TeacherApplicationPreview[] = [
     status: "action_required",
     statusNote: "Blurry JU transcript scan — applicant notified to re-upload official copy.",
     submittedAt: "Oct 08, 02:15 PM",
+    degrees: [
+      {
+        id: "deg-04",
+        institution: "Jimma University (JU)",
+        degreeLevel: "B.Sc.",
+        fieldOfStudy: "Information Technology",
+        graduationYear: 2020,
+        documentScanName: "ju_bsc_it_transcript_scan.pdf",
+        documentScanSize: "0.6 MB (96 DPI)",
+        registrarVerificationId: "JU-IT-2020-0988",
+        verificationSealStatus: "flagged_illegible",
+        scanNotes: "Resolution is below 200 DPI. Registrar watermark and official stamp are unreadable. Re-upload requested.",
+      },
+    ],
+    experience: [
+      {
+        id: "exp-04",
+        role: "Lead Mobile Developer",
+        organization: "Ride / Hybrid Apps Addis",
+        years: 4,
+        period: "2020 — Present",
+        highlights: [
+          "Developed driver and rider apps with offline-first geofencing and Telebirr in-app checkout.",
+          "Over 350,000 active monthly users on Android and iOS in Addis Ababa.",
+        ],
+      },
+    ],
+    certifications: [
+      {
+        id: "cert-04",
+        title: "Google Associate Android Developer",
+        issuer: "Google Developers",
+        credentialId: "GAAD-881230",
+        issueDate: "August 2021",
+      },
+    ],
+    auditionLecture: {
+      title: "State Management in Flutter with Riverpod & BLoC (Amharic Instruction)",
+      durationMinutes: 21,
+      videoUrl: "https://stream.asquala.edu/auditions/app-003/lecture.mp4",
+      topicsCovered: [
+        "Comparing Provider, Riverpod, and BLoC patterns",
+        "Handling low-bandwidth network retry buffers",
+      ],
+    },
+    identity: {
+      fullName: "Natnael Dagne Tarekegn",
+      officialEmail: "natnael.dagne@gmail.com",
+      phone: "+251 93 456 7890",
+      location: "Kirkos Subcity, Addis Ababa, Ethiopia",
+      nationalIdVerified: true,
+      nationalIdNumberMasked: "ETH-NID-••••-3329",
+      linkedInUrl: "https://linkedin.com/in/natnael-dagne",
+      gitHubUrl: "https://github.com/natnael-flutter",
+    },
+    boardRulingHistory: [
+      {
+        date: "Oct 08, 04:30 PM",
+        ruling: "action_required",
+        auditor: "Dr. Alazar Tadesse",
+        notes: "Scan resolution too low (96 DPI). Please upload an official scanned PDF copy from Jimma University registrar.",
+      },
+    ],
   },
-  {
+
+  "app-004": {
     id: "app-004",
     name: "Dr. Meron Tesfaye",
     avatarUrl:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
     headline: "Assistant Professor & Machine Learning Researcher",
+    specialty: "AI & Natural Language Processing",
     institution: "Addis Ababa University (AAU)",
     degreeTitle: "Ph.D. Computer Science (NLP for Semitic Languages)",
     yearsExperience: 11,
@@ -73,8 +304,160 @@ export const PENDING_TEACHER_APPLICATIONS: TeacherApplicationPreview[] = [
     status: "approved",
     statusNote: "Unanimously accredited by Academic Board Chair.",
     submittedAt: "Oct 06, 09:30 AM",
+    degrees: [
+      {
+        id: "deg-05",
+        institution: "Addis Ababa University (AAU)",
+        degreeLevel: "Ph.D.",
+        fieldOfStudy: "Computer Science (Semitic NLP)",
+        graduationYear: 2019,
+        documentScanName: "aau_phd_diploma_original.pdf",
+        documentScanSize: "4.8 MB (600 DPI)",
+        registrarVerificationId: "AAU-PHD-2019-0012",
+        verificationSealStatus: "verified",
+        scanNotes: "Doctoral dissertation on Amharic Morphological Parsing verified with AAU Graduate Studies.",
+      },
+      {
+        id: "deg-06",
+        institution: "Addis Ababa University (AAU)",
+        degreeLevel: "M.Sc.",
+        fieldOfStudy: "Computer Science",
+        graduationYear: 2013,
+        documentScanName: "aau_msc_diploma.pdf",
+        documentScanSize: "3.2 MB (300 DPI)",
+        registrarVerificationId: "AAU-MSC-2013-1102",
+        verificationSealStatus: "verified",
+      },
+    ],
+    experience: [
+      {
+        id: "exp-05",
+        role: "Assistant Professor & Principal Investigator",
+        organization: "AAU AI Research Lab",
+        years: 11,
+        period: "2013 — Present",
+        highlights: [
+          "Published 18 peer-reviewed research papers in ACL, EMNLP, and IEEE on African language modeling.",
+          "Supervised over 40 M.Sc. software engineering students at AAiT and AAU.",
+        ],
+      },
+    ],
+    certifications: [
+      {
+        id: "cert-05",
+        title: "TensorFlow Developer Certificate",
+        issuer: "Google / TensorFlow Certificate Program",
+        credentialId: "TF-DEV-009182",
+        issueDate: "January 2021",
+      },
+    ],
+    auditionLecture: {
+      title: "Foundations of Large Language Models: Tokenization & Attention for Semitic Scripts",
+      durationMinutes: 32,
+      videoUrl: "https://stream.asquala.edu/auditions/app-004/lecture.mp4",
+      topicsCovered: [
+        "Byte-pair encoding vs WordPiece for Ethiopic Fidel script",
+        "Self-attention mathematical breakdown",
+      ],
+    },
+    identity: {
+      fullName: "Dr. Meron Tesfaye Bekele",
+      officialEmail: "meron.tesfaye@aau.edu.et",
+      phone: "+251 91 567 8901",
+      location: "Addis Ababa University Faculty Quarters, Arat Kilo",
+      nationalIdVerified: true,
+      nationalIdNumberMasked: "ETH-NID-••••-9012",
+      linkedInUrl: "https://linkedin.com/in/dr-meron-tesfaye",
+    },
+    boardRulingHistory: [
+      {
+        date: "Oct 09, 11:15 AM",
+        ruling: "approved",
+        auditor: "Dr. Alazar Tadesse",
+        notes: "Exemplary academic credentials and research background. Unanimously approved for Master-level course creation.",
+      },
+    ],
   },
-];
+
+  "app-005": {
+    id: "app-005",
+    name: "Kaleb Worku",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+    headline: "Junior Web Developer",
+    specialty: "HTML & Basic WordPress",
+    institution: "Hawassa University (HU)",
+    degreeTitle: "Diploma in Information Technology",
+    yearsExperience: 1,
+    currentCompany: "Freelance",
+    status: "rejected",
+    statusNote: "Application denied: Does not meet minimum 3-year production engineering prerequisite.",
+    submittedAt: "Oct 04, 11:00 AM",
+    degrees: [
+      {
+        id: "deg-07",
+        institution: "Hawassa University (HU)",
+        degreeLevel: "Postgrad Diploma",
+        fieldOfStudy: "Basic IT",
+        graduationYear: 2023,
+        documentScanName: "hu_diploma_scan.pdf",
+        documentScanSize: "1.1 MB",
+        registrarVerificationId: "HU-2023-7721",
+        verificationSealStatus: "verified",
+      },
+    ],
+    experience: [
+      {
+        id: "exp-06",
+        role: "Junior Freelance Developer",
+        organization: "Self-Employed",
+        years: 1,
+        period: "2023 — Present",
+        highlights: ["Created basic promotional websites for local businesses."],
+      },
+    ],
+    certifications: [],
+    auditionLecture: {
+      title: "Introduction to HTML5 Tags",
+      durationMinutes: 10,
+      videoUrl: "https://stream.asquala.edu/auditions/app-005/lecture.mp4",
+      topicsCovered: ["Headings and paragraphs"],
+    },
+    identity: {
+      fullName: "Kaleb Worku Desta",
+      officialEmail: "kaleb.worku@gmail.com",
+      phone: "+251 94 567 1234",
+      location: "Hawassa, Ethiopia",
+      nationalIdVerified: true,
+      nationalIdNumberMasked: "ETH-NID-••••-1190",
+    },
+    boardRulingHistory: [
+      {
+        date: "Oct 05, 02:00 PM",
+        ruling: "rejected",
+        auditor: "Dr. Alazar Tadesse",
+        notes: "Asquala requires a minimum of 3 years verified production engineering experience or an accredited B.Sc./M.Sc. degree. Candidate advised to reapply after gaining additional industry experience.",
+      },
+    ],
+  },
+};
+
+export const PENDING_TEACHER_APPLICATIONS: TeacherApplicationPreview[] = Object.values(
+  INITIAL_TEACHER_DOSSIERS
+).map((d) => ({
+  id: d.id,
+  name: d.name,
+  avatarUrl: d.avatarUrl,
+  headline: d.headline,
+  specialty: d.specialty,
+  institution: d.institution,
+  degreeTitle: d.degreeTitle,
+  yearsExperience: d.yearsExperience,
+  currentCompany: d.currentCompany,
+  status: d.status,
+  statusNote: d.statusNote,
+  submittedAt: d.submittedAt,
+}));
 
 export const PENDING_COURSE_REVIEWS: CourseReviewPreview[] = [
   {

@@ -58,6 +58,7 @@ export interface TeacherApplicationPreview {
   name: string;
   avatarUrl: string;
   headline: string;
+  specialty?: string;
   institution: string;
   degreeTitle: string;
   yearsExperience: number;
@@ -65,6 +66,88 @@ export interface TeacherApplicationPreview {
   status: AccreditationApplicationStatus;
   statusNote?: string;
   submittedAt: string;
+}
+
+export interface DegreeRecord {
+  id: string;
+  institution: string;
+  degreeLevel: "B.Sc." | "M.Sc." | "Ph.D." | "Postgrad Diploma";
+  fieldOfStudy: string;
+  graduationYear: number;
+  documentScanName: string;
+  documentScanSize: string;
+  registrarVerificationId: string;
+  verificationSealStatus: "verified" | "flagged_illegible" | "pending";
+  scanNotes?: string;
+}
+
+export interface ExperienceRecord {
+  id: string;
+  role: string;
+  organization: string;
+  years: number;
+  period: string;
+  highlights: string[];
+  academicReference?: {
+    name: string;
+    contact: string;
+    title: string;
+    institution: string;
+  };
+}
+
+export interface CertificationRecord {
+  id: string;
+  title: string;
+  issuer: string;
+  credentialId: string;
+  issueDate: string;
+  verificationUrl?: string;
+}
+
+export interface AuditionLecture {
+  title: string;
+  durationMinutes: number;
+  videoUrl: string;
+  topicsCovered: string[];
+}
+
+export interface CandidateIdentity {
+  fullName: string;
+  officialEmail: string;
+  phone: string;
+  location: string;
+  nationalIdVerified: boolean;
+  nationalIdNumberMasked: string;
+  linkedInUrl?: string;
+  gitHubUrl?: string;
+  portfolioUrl?: string;
+}
+
+export interface TeacherDossier {
+  id: string;
+  name: string;
+  avatarUrl: string;
+  headline: string;
+  specialty: string;
+  institution: string;
+  degreeTitle: string;
+  yearsExperience: number;
+  currentCompany: string;
+  status: AccreditationApplicationStatus;
+  statusNote?: string;
+  submittedAt: string;
+  degrees: DegreeRecord[];
+  experience: ExperienceRecord[];
+  certifications: CertificationRecord[];
+  auditionLecture: AuditionLecture;
+  identity: CandidateIdentity;
+  boardRulingHistory?: Array<{
+    date: string;
+    ruling: AccreditationApplicationStatus;
+    auditor: string;
+    notes: string;
+  }>;
 }
 
 export type CoursePublicationStatus =

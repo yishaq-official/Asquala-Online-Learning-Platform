@@ -3,7 +3,7 @@
 > **File**: `docs/plan/admin-interface/03-teacher-accreditation-desk.md`  
 > **Target Routes**: `/admin/accreditation`, `/admin/accreditation/[id]`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/admin-interface/00-overview.md)  
-> **Status**: SPECIFIED & PLANNED  
+> **Status**: COMPLETED & VERIFIED IN BROWSER ✅  
 
 ---
 
@@ -106,8 +106,9 @@ asquala-online-school/
 
 ## 4. Verification Checklist
 
-- [ ] Search input filters candidate cards by name, university, or subject specialty.
-- [ ] Switching between tabs in `DossierViewer` displays degree scans, experience, certs, and identity cleanly.
-- [ ] Clicking "Inspect Scan" opens document modal with legible seal verification badge.
-- [ ] Recording an "Approved" ruling updates candidate status badge to `Accredited Educator` immediately.
-- [ ] Recording an "Action Required" ruling updates status badge to `Action Required` with the feedback note.
+- [x] Search input filters candidate cards by name, university, or subject specialty.
+- [x] Switching between tabs in `DossierViewer` displays degree scans, experience, certs, and identity cleanly.
+- [x] Clicking "Inspect Scan" opens document modal with legible seal verification badge.
+- [x] Recording an "Approved" ruling updates candidate status badge to `Verified Asquala Educator` immediately.
+- [x] Recording an "Action Required" ruling updates status badge to `Action Required` with the feedback note.
+- [x] Queue counters update reactively in the header and sidebar upon recording a ruling.
