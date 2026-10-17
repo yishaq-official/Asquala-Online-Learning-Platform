@@ -3,7 +3,7 @@
 > **File**: `docs/plan/admin-interface/05-treasury-payouts.md`  
 > **Target Route**: `/admin/payouts`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/admin-interface/00-overview.md)  
-> **Status**: SPECIFIED & PLANNED  
+> **Status**: COMPLETED & VERIFIED IN BROWSER ✅  
 
 ---
 
@@ -71,6 +71,6 @@ asquala-online-school/
 
 ## 4. Verification Checklist
 
-- [ ] Payout balances for Telebirr and CBE match mock dataset calculations.
-- [ ] Clicking "Settle Payout" opens modal with correct instructor name and account details.
-- [ ] Entering reference ID and confirming immediately updates transaction status to `Settled` with the reference ID displayed.
+- [x] Payout balances for Telebirr and CBE match mock dataset calculations.
+- [x] Clicking "Settle Payout" opens modal with correct instructor name and account details.
+- [x] Entering reference ID and confirming immediately updates transaction status to `Settled` with the reference ID displayed.
