@@ -241,3 +241,39 @@ export interface PlatformAuditItem {
   target: string;
   status: "approved" | "flagged" | "settled" | "rejected";
 }
+
+export type PayoutChannel = "telebirr" | "cbe";
+
+export type PayoutStatus = "pending" | "settled" | "flagged";
+
+export interface PayoutTransaction {
+  id: string;
+  instructorId: string;
+  instructorName: string;
+  instructorEmail: string;
+  instructorAvatar: string;
+  amountETB: number;
+  channel: PayoutChannel;
+  telebirrPhone?: string;
+  cbeAccountNumber?: string;
+  cbeAccountName?: string;
+  cbeBranch?: string;
+  status: PayoutStatus;
+  requestedAt: string;
+  settledAt?: string;
+  settledBy?: string;
+  transactionRefId?: string;
+  notes?: string;
+}
+
+export interface TreasurySummaryStats {
+  totalPendingETB: number;
+  totalPendingCount: number;
+  telebirrPendingETB: number;
+  telebirrCount: number;
+  cbePendingETB: number;
+  cbeCount: number;
+  settledThisMonthETB: number;
+  settledCount: number;
+}
+

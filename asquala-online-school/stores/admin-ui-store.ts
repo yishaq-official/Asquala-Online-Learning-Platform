@@ -8,10 +8,12 @@ import {
   AccreditationApplicationStatus,
   CourseAuditDetail,
   CoursePublicationStatus,
+  PayoutTransaction,
 } from "@/types/admin";
 import {
   INITIAL_TEACHER_DOSSIERS,
   INITIAL_COURSE_AUDITS,
+  INITIAL_PAYOUT_TRANSACTIONS,
 } from "@/lib/mock-admin-data";
 
 export const DEFAULT_AUDITOR: AdminAuditor = {
@@ -50,6 +52,12 @@ interface AdminUiState {
     ruling: CoursePublicationStatus,
     notes: string
   ) => void;
+  payoutTransactions: PayoutTransaction[];
+  settlePayoutTransaction: (
+    payoutId: string,
+    transactionRefId: string,
+    notes?: string
+  ) => void;
 }
 
 export const useAdminUiStore = create<AdminUiState>((set) => ({
@@ -59,11 +67,12 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
   auditCounts: {
     pendingAccreditations: 3, // app-001, app-002, app-003
     pendingCourseReviews: 3,  // crs-aud-001, crs-aud-002, crs-aud-003
-    pendingPayoutSettlements: 5,
+    pendingPayoutSettlements: 3, // pay-001, pay-002, pay-003
     flaggedDisputes: 1,
   },
   teacherDossiers: INITIAL_TEACHER_DOSSIERS,
   courseAudits: INITIAL_COURSE_AUDITS,
+  payoutTransactions: INITIAL_PAYOUT_TRANSACTIONS,
 
   toggleSidebar: () =>
     set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
@@ -168,6 +177,38 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
             0,
             state.auditCounts.pendingCourseReviews + pendingDelta
           ),
+        },
+      };
+    }),
+
+  settlePayoutTransaction: (payoutId, transactionRefId, notes) =>
+    set((state) => {
+      const existing = state.payoutTransactions.find((p) => p.id === payoutId);
+      if (!existing) return state;
+
+      const wasPending = existing.status === "pending";
+
+      const updatedTransactions = state.payoutTransactions.map((p) => {
+        if (p.id === payoutId) {
+          return {
+            ...p,
+            status: "settled" as const,
+            settledAt: "Just now",
+            settledBy: state.activeAuditor.name,
+            transactionRefId,
+            notes: notes || p.notes,
+          };
+        }
+        return p;
+      });
+
+      return {
+        payoutTransactions: updatedTransactions,
+        auditCounts: {
+          ...state.auditCounts,
+          pendingPayoutSettlements: wasPending
+            ? Math.max(0, state.auditCounts.pendingPayoutSettlements - 1)
+            : state.auditCounts.pendingPayoutSettlements,
         },
       };
     }),

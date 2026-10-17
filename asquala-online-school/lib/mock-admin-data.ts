@@ -6,6 +6,8 @@ import {
   CourseAuditDetail,
   TreasuryClearancePreview,
   PlatformAuditItem,
+  PayoutTransaction,
+  TreasurySummaryStats,
 } from "@/types/admin";
 
 export const EXECUTIVE_KPI_DATA: ExecutiveKpiData = {
@@ -970,5 +972,119 @@ export const PLATFORM_AUDIT_LOG_DATA: PlatformAuditItem[] = [
     status: "flagged",
   },
 ];
+
+export const INITIAL_TREASURY_SUMMARY: TreasurySummaryStats = {
+  totalPendingETB: 68400,
+  totalPendingCount: 3,
+  telebirrPendingETB: 33400,
+  telebirrCount: 2,
+  cbePendingETB: 35000,
+  cbeCount: 1,
+  settledThisMonthETB: 142000,
+  settledCount: 3,
+};
+
+export const INITIAL_PAYOUT_TRANSACTIONS: PayoutTransaction[] = [
+  {
+    id: "pay-001",
+    instructorId: "app-001",
+    instructorName: "Yishaq Abreham",
+    instructorEmail: "yishaq.abreham@asquala.edu",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    amountETB: 24800,
+    channel: "telebirr",
+    telebirrPhone: "+251 91 123 4567",
+    status: "pending",
+    requestedAt: "Oct 08, 11:30 AM",
+    notes: "Royalty for Next.js 16 Full-Stack Course (22 student enrollments).",
+  },
+  {
+    id: "pay-002",
+    instructorId: "ins-002",
+    instructorName: "Dr. Meron Tesfaye",
+    instructorEmail: "meron.tesfaye@aau.edu.et",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    amountETB: 35000,
+    channel: "cbe",
+    cbeAccountNumber: "1000293847291",
+    cbeAccountName: "Meron Tesfaye Wolde",
+    cbeBranch: "Finfine Branch, Addis Ababa",
+    status: "pending",
+    requestedAt: "Oct 09, 09:15 AM",
+    notes: "Monthly disbursement for Enterprise Cloud Architecture & Docker.",
+  },
+  {
+    id: "pay-003",
+    instructorId: "app-002",
+    instructorName: "Bethlehem Hailemariam",
+    instructorEmail: "bethlehem.haile@gmail.com",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
+    amountETB: 8600,
+    channel: "telebirr",
+    telebirrPhone: "+251 92 345 6789",
+    status: "pending",
+    requestedAt: "Oct 09, 02:40 PM",
+    notes: "CI/CD & DevOps Masterclass milestone payout.",
+  },
+  {
+    id: "pay-004",
+    instructorId: "ins-004",
+    instructorName: "Kalkidan Assefa",
+    instructorEmail: "kalkidan.assefa@techaddis.et",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    amountETB: 18400,
+    channel: "cbe",
+    cbeAccountNumber: "1000349811203",
+    cbeAccountName: "Kalkidan Assefa Tekle",
+    cbeBranch: "Bole Medhanialem Branch",
+    status: "settled",
+    requestedAt: "Oct 02, 04:00 PM",
+    settledAt: "Oct 02, 05:15 PM",
+    settledBy: "Dr. Alazar Tadesse",
+    transactionRefId: "CBE-FT-889104",
+    notes: "Full-stack React Native royalties cleared via ACH transfer.",
+  },
+  {
+    id: "pay-005",
+    instructorId: "ins-005",
+    instructorName: "Dawit Bekele",
+    instructorEmail: "dawit.bekele@aait.edu.et",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+    amountETB: 45600,
+    channel: "cbe",
+    cbeAccountNumber: "1000192837461",
+    cbeAccountName: "Dawit Bekele Negash",
+    cbeBranch: "Arat Kilo Branch",
+    status: "settled",
+    requestedAt: "Sep 28, 10:00 AM",
+    settledAt: "Sep 28, 11:30 AM",
+    settledBy: "Dr. Alazar Tadesse",
+    transactionRefId: "CBE-FT-772910",
+    notes: "Advanced PostgreSQL & Database Systems royalty disbursement.",
+  },
+  {
+    id: "pay-006",
+    instructorId: "ins-006",
+    instructorName: "Samrawit Girma",
+    instructorEmail: "samrawit.g@gmail.com",
+    instructorAvatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+    amountETB: 78000,
+    channel: "telebirr",
+    telebirrPhone: "+251 93 456 7890",
+    status: "settled",
+    requestedAt: "Sep 25, 03:20 PM",
+    settledAt: "Sep 25, 03:22 PM",
+    settledBy: "Dr. Alazar Tadesse",
+    transactionRefId: "TLB-TX-551029",
+    notes: "UI/UX Design Systems in Figma course royalties instant clearance.",
+  },
+];
+
 
 
