@@ -154,7 +154,56 @@ export type CoursePublicationStatus =
   | "pending_review"
   | "in_audit"
   | "approved"
-  | "revision_requested";
+  | "revision_requested"
+  | "rejected";
+
+export interface CourseModuleAudit {
+  id: string;
+  moduleIndex: number;
+  title: string;
+  lessonsCount: number;
+  durationMinutes: number;
+  hasMilestoneQuiz: boolean;
+  quizQuestionsCount?: number;
+  quizPassingThreshold?: number;
+  sampleVideoTitle?: string;
+  sampleVideoQuality?: string;
+}
+
+export interface CourseAuditDetail {
+  id: string;
+  title: string;
+  subtitle: string;
+  instructorId: string;
+  instructorName: string;
+  instructorAvatar: string;
+  instructorTitle: string;
+  category: string;
+  difficulty: "Beginner" | "Intermediate" | "Advanced";
+  language: "Amharic & English" | "Amharic" | "English";
+  priceETB: number;
+  instructorRoyaltyETB: number; // 85%
+  platformTakeRateETB: number;  // 15%
+  status: CoursePublicationStatus;
+  statusNote?: string;
+  submittedAt: string;
+  learningOutcomes: string[];
+  prerequisites: string[];
+  modules: CourseModuleAudit[];
+  totalModules: number;
+  totalLessons: number;
+  totalDurationHours: number;
+  totalQuizzes: number;
+  passingThresholdPercent: number; // 80% or 85%
+  videoQuality: string; // e.g. "1080p Full HD"
+  starterFilesIncluded: boolean;
+  boardRulingHistory?: Array<{
+    date: string;
+    ruling: CoursePublicationStatus;
+    auditor: string;
+    notes: string;
+  }>;
+}
 
 export interface CourseReviewPreview {
   id: string;

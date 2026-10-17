@@ -6,8 +6,13 @@ import {
   AdminAuditCounts,
   TeacherDossier,
   AccreditationApplicationStatus,
+  CourseAuditDetail,
+  CoursePublicationStatus,
 } from "@/types/admin";
-import { INITIAL_TEACHER_DOSSIERS } from "@/lib/mock-admin-data";
+import {
+  INITIAL_TEACHER_DOSSIERS,
+  INITIAL_COURSE_AUDITS,
+} from "@/lib/mock-admin-data";
 
 export const DEFAULT_AUDITOR: AdminAuditor = {
   id: "aud-001",
@@ -28,6 +33,7 @@ interface AdminUiState {
   activeAuditor: AdminAuditor;
   auditCounts: AdminAuditCounts;
   teacherDossiers: Record<string, TeacherDossier>;
+  courseAudits: Record<string, CourseAuditDetail>;
 
   toggleSidebar: () => void;
   setSidebarCollapsed: (collapsed: boolean) => void;
@@ -39,6 +45,11 @@ interface AdminUiState {
     ruling: AccreditationApplicationStatus,
     notes: string
   ) => void;
+  recordCoursePublicationRuling: (
+    courseId: string,
+    ruling: CoursePublicationStatus,
+    notes: string
+  ) => void;
 }
 
 export const useAdminUiStore = create<AdminUiState>((set) => ({
@@ -47,11 +58,12 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
   activeAuditor: DEFAULT_AUDITOR,
   auditCounts: {
     pendingAccreditations: 3, // app-001, app-002, app-003
-    pendingCourseReviews: 3,
+    pendingCourseReviews: 3,  // crs-aud-001, crs-aud-002, crs-aud-003
     pendingPayoutSettlements: 5,
     flaggedDisputes: 1,
   },
   teacherDossiers: INITIAL_TEACHER_DOSSIERS,
+  courseAudits: INITIAL_COURSE_AUDITS,
 
   toggleSidebar: () =>
     set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
@@ -106,6 +118,55 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
           pendingAccreditations: Math.max(
             0,
             state.auditCounts.pendingAccreditations + pendingDelta
+          ),
+        },
+      };
+    }),
+
+  recordCoursePublicationRuling: (courseId, ruling, notes) =>
+    set((state) => {
+      const existing = state.courseAudits[courseId];
+      if (!existing) return state;
+
+      const previousStatus = existing.status;
+      const updatedHistory = [
+        ...(existing.boardRulingHistory || []),
+        {
+          date: "Just now",
+          ruling,
+          auditor: state.activeAuditor.name,
+          notes,
+        },
+      ];
+
+      const updatedCourse: CourseAuditDetail = {
+        ...existing,
+        status: ruling,
+        statusNote: notes,
+        boardRulingHistory: updatedHistory,
+      };
+
+      let pendingDelta = 0;
+      const wasPending =
+        previousStatus === "pending_review" ||
+        previousStatus === "in_audit" ||
+        previousStatus === "revision_requested";
+      const isNowResolved = ruling === "approved" || ruling === "rejected";
+
+      if (wasPending && isNowResolved) {
+        pendingDelta = -1;
+      }
+
+      return {
+        courseAudits: {
+          ...state.courseAudits,
+          [courseId]: updatedCourse,
+        },
+        auditCounts: {
+          ...state.auditCounts,
+          pendingCourseReviews: Math.max(
+            0,
+            state.auditCounts.pendingCourseReviews + pendingDelta
           ),
         },
       };
