@@ -277,3 +277,38 @@ export interface TreasurySummaryStats {
   settledCount: number;
 }
 
+export type PlatformUserRole =
+  | "student"
+  | "instructor"
+  | "academic_auditor"
+  | "treasury_auditor"
+  | "super_admin";
+
+export type PlatformUserStatus = "active" | "suspended" | "pending_verification";
+
+export interface PlatformUser {
+  id: string;
+  name: string;
+  email: string;
+  avatarUrl: string;
+  role: PlatformUserRole;
+  isAccreditedTeacher: boolean;
+  institution?: string;
+  status: PlatformUserStatus;
+  joinedAt: string;
+  activityMetric: string;
+  lastActive: string;
+  phone?: string;
+  department?: string;
+}
+
+export interface UserDirectorySummaryStats {
+  totalUsers: number;
+  totalStudents: number;
+  totalInstructors: number;
+  accreditedInstructors: number;
+  totalAdmins: number;
+  suspendedUsers: number;
+}
+
+

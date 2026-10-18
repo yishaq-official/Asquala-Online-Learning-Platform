@@ -9,11 +9,15 @@ import {
   CourseAuditDetail,
   CoursePublicationStatus,
   PayoutTransaction,
+  PlatformUser,
+  PlatformUserRole,
+  PlatformUserStatus,
 } from "@/types/admin";
 import {
   INITIAL_TEACHER_DOSSIERS,
   INITIAL_COURSE_AUDITS,
   INITIAL_PAYOUT_TRANSACTIONS,
+  INITIAL_PLATFORM_USERS,
 } from "@/lib/mock-admin-data";
 
 export const DEFAULT_AUDITOR: AdminAuditor = {
@@ -58,6 +62,9 @@ interface AdminUiState {
     transactionRefId: string,
     notes?: string
   ) => void;
+  registeredUsers: PlatformUser[];
+  toggleUserSuspension: (userId: string) => void;
+  updateUserRole: (userId: string, newRole: PlatformUserRole) => void;
 }
 
 export const useAdminUiStore = create<AdminUiState>((set) => ({
@@ -73,6 +80,7 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
   teacherDossiers: INITIAL_TEACHER_DOSSIERS,
   courseAudits: INITIAL_COURSE_AUDITS,
   payoutTransactions: INITIAL_PAYOUT_TRANSACTIONS,
+  registeredUsers: INITIAL_PLATFORM_USERS,
 
   toggleSidebar: () =>
     set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
@@ -210,6 +218,42 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
             ? Math.max(0, state.auditCounts.pendingPayoutSettlements - 1)
             : state.auditCounts.pendingPayoutSettlements,
         },
+      };
+    }),
+
+  toggleUserSuspension: (userId) =>
+    set((state) => {
+      const updatedUsers = state.registeredUsers.map((user) => {
+        if (user.id === userId) {
+          const nextStatus: PlatformUserStatus =
+            user.status === "suspended" ? "active" : "suspended";
+          return {
+            ...user,
+            status: nextStatus,
+          };
+        }
+        return user;
+      });
+
+      return {
+        registeredUsers: updatedUsers,
+      };
+    }),
+
+  updateUserRole: (userId, newRole) =>
+    set((state) => {
+      const updatedUsers = state.registeredUsers.map((user) => {
+        if (user.id === userId) {
+          return {
+            ...user,
+            role: newRole,
+          };
+        }
+        return user;
+      });
+
+      return {
+        registeredUsers: updatedUsers,
       };
     }),
 }));
