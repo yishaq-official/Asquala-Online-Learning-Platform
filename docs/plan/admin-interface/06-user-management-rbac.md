@@ -3,7 +3,7 @@
 > **File**: `docs/plan/admin-interface/06-user-management-rbac.md`  
 > **Target Route**: `/admin/users`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/admin-interface/00-overview.md)  
-> **Status**: SPECIFIED & PLANNED  
+> **Status**: COMPLETED & CODE-VERIFIED ✅ (Browser testing deferred per user instruction)  
 
 ---
 
@@ -58,7 +58,7 @@ asquala-online-school/
 
 ## 4. Verification Checklist
 
-- [ ] Role filter tabs cleanly isolate students, instructors, and administrators.
-- [ ] Accredited instructors display the "Accredited" verification pill.
-- [ ] Clicking "Suspend" immediately flips user status to `Suspended` and changes button to `Reactivate`.
-- [ ] Clicking "Reactivate" restores account to `Active`.
+- [x] Role filter tabs cleanly isolate students, instructors, and administrators.
+- [x] Accredited instructors display the "Accredited" verification pill.
+- [x] Clicking "Suspend" immediately flips user status to `Suspended` and changes button to `Reactivate`.
+- [x] Clicking "Reactivate" restores account to `Active`.
