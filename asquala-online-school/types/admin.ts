@@ -311,4 +311,52 @@ export interface UserDirectorySummaryStats {
   suspendedUsers: number;
 }
 
+export interface CurriculumCategory {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  iconName: string;
+  courseCount: number;
+  popularTags: string[];
+  isActive: boolean;
+}
+
+export interface PlatformRevenuePolicy {
+  instructorRoyaltyPercent: number; // default 85
+  platformTakeRatePercent: number;  // default 15
+  minimumWithdrawalETB: number;     // default 500
+  payoutSchedule: "instant" | "weekly" | "monthly";
+  telebirrFeeCoveredByPlatform: boolean;
+  lastUpdated: string;
+  updatedBy: string;
+}
+
+export type SecurityAuditActionType =
+  | "accreditation_approved"
+  | "accreditation_rejected"
+  | "accreditation_revision"
+  | "payout_settled"
+  | "course_published"
+  | "course_revision"
+  | "user_suspended"
+  | "user_reactivated"
+  | "policy_updated"
+  | "category_created";
+
+export interface SecurityAuditLogEntry {
+  id: string;
+  timestamp: string;
+  actorName: string;
+  actorRole: string;
+  actorAvatar: string;
+  actionType: SecurityAuditActionType;
+  targetEntity: string;
+  targetId: string;
+  summary: string;
+  cryptoHash: string;
+  ipAddress: string;
+}
+
+
 

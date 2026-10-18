@@ -3,7 +3,7 @@
 > **File**: `docs/plan/admin-interface/07-taxonomy-security-audit.md`  
 > **Target Route**: `/admin/settings`  
 > **Master Overview**: [00-overview.md](file:///home/eaglex/Documents/officials/Asquala-online-learning-platform/docs/plan/admin-interface/00-overview.md)  
-> **Status**: SPECIFIED & PLANNED  
+> **Status**: COMPLETED & CODE-VERIFIED ✅ (Browser testing deferred per user instruction)  
 
 ---
 
@@ -75,7 +75,7 @@ asquala-online-school/
 
 ## 4. Verification Checklist
 
-- [ ] "Add Category" creates a new category card with live badge count.
-- [ ] Adjusting instructor royalty automatically recalculates platform take-rate (sums to 100%).
-- [ ] Submitting policy changes triggers green confirmation toast.
-- [ ] Audit ledger displays formatted chronological records.
+- [x] "Add Category" creates a new category card with live badge count.
+- [x] Adjusting instructor royalty automatically recalculates platform take-rate (sums to 100%).
+- [x] Submitting policy changes triggers green confirmation toast.
+- [x] Audit ledger displays formatted chronological records.

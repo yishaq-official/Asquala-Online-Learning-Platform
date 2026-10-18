@@ -12,12 +12,18 @@ import {
   PlatformUser,
   PlatformUserRole,
   PlatformUserStatus,
+  CurriculumCategory,
+  PlatformRevenuePolicy,
+  SecurityAuditLogEntry,
 } from "@/types/admin";
 import {
   INITIAL_TEACHER_DOSSIERS,
   INITIAL_COURSE_AUDITS,
   INITIAL_PAYOUT_TRANSACTIONS,
   INITIAL_PLATFORM_USERS,
+  INITIAL_CURRICULUM_CATEGORIES,
+  INITIAL_PLATFORM_REVENUE_POLICY,
+  INITIAL_SECURITY_AUDIT_LOGS,
 } from "@/lib/mock-admin-data";
 
 export const DEFAULT_AUDITOR: AdminAuditor = {
@@ -65,6 +71,17 @@ interface AdminUiState {
   registeredUsers: PlatformUser[];
   toggleUserSuspension: (userId: string) => void;
   updateUserRole: (userId: string, newRole: PlatformUserRole) => void;
+  curriculumCategories: CurriculumCategory[];
+  addCurriculumCategory: (
+    category: Omit<CurriculumCategory, "id" | "courseCount">
+  ) => void;
+  toggleCategoryActive: (categoryId: string) => void;
+  revenuePolicy: PlatformRevenuePolicy;
+  updateRevenuePolicy: (policy: Partial<PlatformRevenuePolicy>) => void;
+  securityAuditLogs: SecurityAuditLogEntry[];
+  addSecurityAuditLog: (
+    log: Omit<SecurityAuditLogEntry, "id" | "timestamp" | "cryptoHash">
+  ) => void;
 }
 
 export const useAdminUiStore = create<AdminUiState>((set) => ({
@@ -81,6 +98,9 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
   courseAudits: INITIAL_COURSE_AUDITS,
   payoutTransactions: INITIAL_PAYOUT_TRANSACTIONS,
   registeredUsers: INITIAL_PLATFORM_USERS,
+  curriculumCategories: INITIAL_CURRICULUM_CATEGORIES,
+  revenuePolicy: INITIAL_PLATFORM_REVENUE_POLICY,
+  securityAuditLogs: INITIAL_SECURITY_AUDIT_LOGS,
 
   toggleSidebar: () =>
     set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
@@ -254,6 +274,51 @@ export const useAdminUiStore = create<AdminUiState>((set) => ({
 
       return {
         registeredUsers: updatedUsers,
+      };
+    }),
+
+  addCurriculumCategory: (category) =>
+    set((state) => {
+      const newCategory: CurriculumCategory = {
+        ...category,
+        id: `cat-${Date.now().toString().slice(-4)}`,
+        courseCount: 0,
+      };
+      return {
+        curriculumCategories: [...state.curriculumCategories, newCategory],
+      };
+    }),
+
+  toggleCategoryActive: (categoryId) =>
+    set((state) => ({
+      curriculumCategories: state.curriculumCategories.map((cat) =>
+        cat.id === categoryId ? { ...cat, isActive: !cat.isActive } : cat
+      ),
+    })),
+
+  updateRevenuePolicy: (policy) =>
+    set((state) => ({
+      revenuePolicy: {
+        ...state.revenuePolicy,
+        ...policy,
+        lastUpdated: "Just now",
+        updatedBy: `${state.activeAuditor.name} (${state.activeAuditor.roleTitle})`,
+      },
+    })),
+
+  addSecurityAuditLog: (log) =>
+    set((state) => {
+      const randomHex = Array.from({ length: 64 }, () =>
+        Math.floor(Math.random() * 16).toString(16)
+      ).join("");
+      const newLog: SecurityAuditLogEntry = {
+        ...log,
+        id: `aud-log-${Date.now().toString().slice(-4)}`,
+        timestamp: "Just now",
+        cryptoHash: `sha256:${randomHex}`,
+      };
+      return {
+        securityAuditLogs: [newLog, ...state.securityAuditLogs],
       };
     }),
 }));
